@@ -20,6 +20,7 @@ describe "Markets Api" do
         expect(market).to have_key(:zip)
         expect(market).to have_key(:lat)
         expect(market).to have_key(:lon)
+        expect(market).to have_key(:vendor_count)
         
         expect(market[:name]).to be_an(String)
         expect(market[:street]).to be_an(String)
@@ -29,6 +30,7 @@ describe "Markets Api" do
         expect(market[:zip]).to be_an(String)
         expect(market[:lat]).to be_an(String)
         expect(market[:lon]).to be_an(String)
+        expect(market[:vendor_count]).to be_an(Integer)
 
 
       end
