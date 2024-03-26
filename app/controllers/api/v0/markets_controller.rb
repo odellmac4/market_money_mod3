@@ -3,7 +3,8 @@ class Api::V0::MarketsController < ApplicationController
         render json: MarketSerializer.new(Market.all)
     end
 
-    def update
-
+    def show
+        market = Market.find(params[:id])
+        render json: MarketSerializer.new(market)
     end
 end
