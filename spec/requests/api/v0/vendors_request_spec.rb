@@ -27,7 +27,7 @@ describe "Vendors API" do
     expect(vendor_attributes[:credit_accepted]).to eq(true)
   end
 
-  it "can delete a Vendor" do
+  it "can destroy a Vendor" do
     vendor = create(:vendor)
 
     expect(Vendor.count).to eq(1)
@@ -38,7 +38,7 @@ describe "Vendors API" do
     expect(Vendor.count).to eq(0)
     expect{Vendor.find(vendor.id)}.to raise_error(ActiveRecord::RecordNotFound)
 
-    ### Alternate test to check for deleted Vendor
+    ### Alternate test to check for destroyed Vendor
 
     vendor2 = create(:vendor)
 
