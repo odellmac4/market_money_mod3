@@ -2,6 +2,7 @@ require "rails_helper"
 
 describe "Vendors API" do
   it "can get one Vendor" do
+    #hard coded true to be able to test correct, since be_a(Boolean) is not an option
     vendor = create(:vendor, credit_accepted: true)
 
     get "/api/v0/vendors/#{vendor.id}"
