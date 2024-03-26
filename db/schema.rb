@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_03_30_155211) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_26_021049) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_30_155211) do
     t.string "zip"
     t.string "lat"
     t.string "lon"
+    t.integer "vendor_count"
   end
 
   create_table "vendors", force: :cascade do |t|
