@@ -1,0 +1,3 @@
+class Vendor < ApplicationRecord
+
+end
