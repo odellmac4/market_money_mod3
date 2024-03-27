@@ -3,6 +3,10 @@ class Api::V0::MarketVendorsController < ApplicationController
     market_vendor = MarketVendor.new(market_vendor_params)
     if market_vendor.save
       render json: { message: "Successfully added vendor to market" }, status: :created
+    else
+      message = market_vendor.errors.messages
+      render json: ErrorSerializer.new(ErrorMessage.new(message, 404))
+      .serialize_json, status: :not_found
     end
   end
 

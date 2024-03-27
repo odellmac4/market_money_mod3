@@ -25,9 +25,13 @@ describe "Market Vendors API" do
 
   describe "sad paths" do
     it "has a 404 error" do
-      post "/api/v0/market_vendors", headers: @headers, params: JSON.generate(market_id: 1, vendor_id: @vendor.id)
+      body =    {
+        "market_id": 1,
+        "vendor_id": @vendor.id
+      }
 
-
+      post "/api/v0/market_vendors", headers: @headers, params: JSON.generate(body)
+      expect(response.status).to eq(404)
     end
   end
 end
