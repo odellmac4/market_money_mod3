@@ -2,7 +2,7 @@ class Api::V0::MarketVendorsController < ApplicationController
   def create
     market_vendor = MarketVendor.new(market_vendor_params)
     if market_vendor.save
-        render json: MarketVendorSerializer.new(market_vendor)
+      render json: { message: "Successfully added vendor to market" }, status: :created
     end
   end
 
