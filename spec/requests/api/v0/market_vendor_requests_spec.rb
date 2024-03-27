@@ -18,7 +18,6 @@ describe "Market Vendors API" do
     expect(data[:message]).to eq("Successfully added vendor to market")
 
     market_vendor = MarketVendor.last
-
     expect(market_vendor.vendor_id).to eq(@vendor.id)
     expect(market_vendor.market_id).to eq(@market.id)
   end
