@@ -12,7 +12,6 @@ class Api::V0::VendorsController < ApplicationController
     else
       render json: { errors: vendor.errors.full_messages }, status: :bad_request
     end
-
   end
 
   def destroy
@@ -24,9 +23,9 @@ class Api::V0::VendorsController < ApplicationController
 
   def vendor_params
     params.require(:vendor).permit(
-      :name, 
-      :description, 
-      :contact_name, 
+      :name,
+      :description,
+      :contact_name,
       :contact_phone,
       :credit_accepted
       )

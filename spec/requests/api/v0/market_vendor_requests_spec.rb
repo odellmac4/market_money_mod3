@@ -39,7 +39,7 @@ describe "Market Vendors API" do
       expect(data[:errors].first[:detail]).to eq("Validation failed: Market must exist")
     end
 
-    xit "has a 422 error" do
+    it "has a 422 error" do
       MarketVendor.create!(market_id: @market.id, vendor_id: @vendor.id)
       body =    {
         "market_id": @market.id,

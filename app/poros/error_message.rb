@@ -6,9 +6,7 @@ class ErrorMessage
     @status_code = status_code
   end
 
-  def hash_message_to_s
-    @message.map do |object, error|
-    "#{object.to_s.capitalize()} #{error.first.to_s}"
-    end
+  def object_must_exist
+    "#{@message.split[2]} must exist"
   end
 end

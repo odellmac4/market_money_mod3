@@ -15,10 +15,11 @@ class ErrorSerializer
   end
 
   def serializer_validation
+    require 'pry'; binding.pry
     {
       errors: [
           {
-            detail: "Validation failed: #{@error_object.hash_message_to_s.first}"
+            detail: "Validation failed: #{@error_object.message.to_s}"
           }
         ]
       }

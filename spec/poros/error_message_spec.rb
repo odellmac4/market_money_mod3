@@ -13,16 +13,12 @@ describe "Error Message PORO" do
   end
 
   describe "instance methods" do
-    describe "#hash_message_to_s" do
+    describe "#object_must_exist" do
       it "turns a Hash message to a String" do
-        hash_message = {
-          :market => ["must exist"]
-        }
+      error_message = ErrorMessage.new("Couldn't find Market with 'id'=1", 404)
 
-      error_message = ErrorMessage.new(hash_message, 404)
-
-      expect(error_message.hash_message_to_s).to eq(["Market must exist"])
+      expect(error_message.object_must_exist).to eq(["Market must exist"])
       end
-end
+    end
   end
 end

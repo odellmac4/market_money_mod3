@@ -114,11 +114,11 @@ describe "Vendors API" do
                     credit_accepted: false
                   })
     headers = {"CONTENT_TYPE" => "application/json"}
-  
+
     post "/api/v0/vendors", headers: headers, params: vendor_params.to_json
-    
+
     created_vendor = Vendor.last
-  
+
     expect(response).to be_successful
     expect(created_vendor.name).to eq(vendor_params[:name])
     expect(created_vendor.description).to eq(vendor_params[:description])
