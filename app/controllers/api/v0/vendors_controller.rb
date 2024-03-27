@@ -6,6 +6,6 @@ class Api::V0::VendorsController < ApplicationController
 
   def destroy
     vendor = Vendor.find(params[:id])
-    vendor.delete
+    vendor.destroy
   end
 end
