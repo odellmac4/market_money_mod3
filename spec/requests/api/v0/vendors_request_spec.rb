@@ -1,48 +1,49 @@
 require "rails_helper"
 
 describe "Vendors API" do
-  it "can get one Vendor" do
-    #hard coded true to be able to test correct, since be_a(Boolean) is not an option
-    vendor = create(:vendor, credit_accepted: true)
+  describe "Create a Vendor" do
+    it "can get one Vendor" do
+      #hard coded true to be able to test correct, since be_a(Boolean) is not an option
+      vendor = create(:vendor, credit_accepted: true)
 
-    get "/api/v0/vendors/#{vendor.id}"
+      get "/api/v0/vendors/#{vendor.id}"
 
-    expect(response).to be_successful
+      expect(response).to be_successful
 
-    vendor_data = JSON.parse(response.body, symbolize_names: true)
-    expect(vendor_data.keys).to eq([:data])
-    expect(vendor_data[:data].keys).to eq([:id, :type, :attributes])
-    expect(vendor_data[:data][:id]).to be_a(String)
-    expect(vendor_data[:data][:type]).to be_a(String)
-    expect(vendor_data[:data][:attributes]).to be_a(Hash)
+      vendor_data = JSON.parse(response.body, symbolize_names: true)
+      expect(vendor_data.keys).to eq([:data])
+      expect(vendor_data[:data].keys).to eq([:id, :type, :attributes])
+      expect(vendor_data[:data][:id]).to be_a(String)
+      expect(vendor_data[:data][:type]).to be_a(String)
+      expect(vendor_data[:data][:attributes]).to be_a(Hash)
 
-    vendor_attributes = vendor_data[:data][:attributes]
-    attribute_keys = [:name, :description, :contact_name, :contact_phone, :credit_accepted]
+      vendor_attributes = vendor_data[:data][:attributes]
+      attribute_keys = [:name, :description, :contact_name, :contact_phone, :credit_accepted]
 
-    expect(vendor_data[:data][:attributes].keys).to eq(attribute_keys)
-    expect(vendor_attributes[:name]).to be_a(String)
-    expect(vendor_attributes[:description]).to be_a(String)
-    expect(vendor_attributes[:contact_name]).to be_a(String)
-    expect(vendor_attributes[:contact_phone]).to be_a(String)
-    expect(vendor_attributes[:credit_accepted]).to eq(true)
-  end
+      expect(vendor_data[:data][:attributes].keys).to eq(attribute_keys)
+      expect(vendor_attributes[:name]).to be_a(String)
+      expect(vendor_attributes[:description]).to be_a(String)
+      expect(vendor_attributes[:contact_name]).to be_a(String)
+      expect(vendor_attributes[:contact_phone]).to be_a(String)
+      expect(vendor_attributes[:credit_accepted]).to eq(true)
+    end
 
-  describe "sad paths" do
+
     it "will return a 404 error if a Vendor id doesn't exist" do
-    get "/api/v0/vendors/1"
+      get "/api/v0/vendors/1"
 
-    expect(response).to_not be_successful
-    expect(response.status).to eq(404)
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
 
-    data = JSON.parse(response.body, symbolize_names: true)
+      data = JSON.parse(response.body, symbolize_names: true)
 
-    expect(data[:errors]).to be_a(Array)
-    expect(data[:errors].first[:status]).to eq("404")
-    expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=1")
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:status]).to eq("404")
+      expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=1")
     end
   end
 
-  describe "destroy a Vendor" do
+  describe "delete a Vendor" do
     it "can destroy a Vendor from the database" do
       vendor = create(:vendor)
 
@@ -92,5 +93,15 @@ describe "Vendors API" do
 
     it "has a 404 error when Vendor id is not valid" do
       delete "/api/v0/vendors/1"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:status]).to eq("404")
+      expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=1")
     end
+  end
 end
