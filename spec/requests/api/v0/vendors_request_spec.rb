@@ -35,6 +35,8 @@ describe "Vendors API" do
     delete "/api/v0/vendors/#{vendor.id}"
 
     expect(response).to be_successful
+    expect(response.code).to eq("204")
+    expect(response).to have_http_status(:no_content)
     expect(Vendor.count).to eq(0)
     expect{Vendor.find(vendor.id)}.to raise_error(ActiveRecord::RecordNotFound)
 
