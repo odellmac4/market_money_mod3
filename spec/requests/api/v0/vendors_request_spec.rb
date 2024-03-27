@@ -27,6 +27,21 @@ describe "Vendors API" do
     expect(vendor_attributes[:credit_accepted]).to eq(true)
   end
 
+  describe "sad paths" do
+    it "will return a 404 error if a Vendor id doesn't exist" do
+    get "/api/v0/vendors/1"
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+
+    data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(data[:errors]).to be_a(Array)
+    expect(data[:errors].first[:status]).to eq("404")
+    expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=1")
+    end
+  end
+
   describe "destroy a Vendor" do
     it "can destroy a Vendor from the database" do
       vendor = create(:vendor)
