@@ -4,8 +4,30 @@ class Api::V0::VendorsController < ApplicationController
     render json: VendorSerializer.new(vendor)
   end
 
+  def create
+    vendor = Vendor.new(vendor_params)
+    if vendor.save
+      render json: VendorSerializer.new(vendor), status: :created
+    else
+      render json: { errors: vendor.errors.full_messages }, status: :bad_request
+    end
+
+  end
+
   def destroy
     vendor = Vendor.find(params[:id])
     vendor.destroy
+  end
+
+  private
+
+  def vendor_params
+    params.require(:vendor).permit(
+      :name, 
+      :description, 
+      :contact_name, 
+      :contact_phone,
+      :credit_accepted
+      )
   end
 end
