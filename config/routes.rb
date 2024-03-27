@@ -10,12 +10,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v0 do
-<<<<<<< HEAD
       resources :markets, only: [:index, :show]
-=======
-      resources :markets, only: [:index]
       resources :vendors, only: [:show]
->>>>>>> 479a06f35983ce37b4b96b659e78bf0af7367b5a
     end
   end
 end
