@@ -1,77 +1,108 @@
 require "rails_helper"
 
 describe "Vendors API" do
-  it "can get one Vendor" do
-    #hard coded true to be able to test correct, since be_a(Boolean) is not an option
-    vendor = create(:vendor, credit_accepted: true)
+  describe "Create a Vendor" do
+    it "can get one Vendor" do
+      #hard coded true to be able to test correct, since be_a(Boolean) is not an option
+      vendor = create(:vendor, credit_accepted: true)
 
-    get "/api/v0/vendors/#{vendor.id}"
+      get "/api/v0/vendors/#{vendor.id}"
 
-    expect(response).to be_successful
+      expect(response).to be_successful
 
-    vendor_data = JSON.parse(response.body, symbolize_names: true)
-    expect(vendor_data.keys).to eq([:data])
-    expect(vendor_data[:data].keys).to eq([:id, :type, :attributes])
-    expect(vendor_data[:data][:id]).to be_a(String)
-    expect(vendor_data[:data][:type]).to be_a(String)
-    expect(vendor_data[:data][:attributes]).to be_a(Hash)
+      vendor_data = JSON.parse(response.body, symbolize_names: true)
+      expect(vendor_data.keys).to eq([:data])
+      expect(vendor_data[:data].keys).to eq([:id, :type, :attributes])
+      expect(vendor_data[:data][:id]).to be_a(String)
+      expect(vendor_data[:data][:type]).to be_a(String)
+      expect(vendor_data[:data][:attributes]).to be_a(Hash)
 
-    vendor_attributes = vendor_data[:data][:attributes]
-    attribute_keys = [:name, :description, :contact_name, :contact_phone, :credit_accepted]
+      vendor_attributes = vendor_data[:data][:attributes]
+      attribute_keys = [:name, :description, :contact_name, :contact_phone, :credit_accepted]
 
-    expect(vendor_data[:data][:attributes].keys).to eq(attribute_keys)
-    expect(vendor_attributes[:name]).to be_a(String)
-    expect(vendor_attributes[:description]).to be_a(String)
-    expect(vendor_attributes[:contact_name]).to be_a(String)
-    expect(vendor_attributes[:contact_phone]).to be_a(String)
-    expect(vendor_attributes[:credit_accepted]).to eq(true)
+      expect(vendor_data[:data][:attributes].keys).to eq(attribute_keys)
+      expect(vendor_attributes[:name]).to be_a(String)
+      expect(vendor_attributes[:description]).to be_a(String)
+      expect(vendor_attributes[:contact_name]).to be_a(String)
+      expect(vendor_attributes[:contact_phone]).to be_a(String)
+      expect(vendor_attributes[:credit_accepted]).to eq(true)
+    end
+
+
+    it "will return a 404 error if a Vendor id doesn't exist" do
+      get "/api/v0/vendors/1"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:status]).to eq("404")
+      expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=1")
+    end
   end
 
-  it "can destroy a Vendor" do
-    vendor = create(:vendor)
+  describe "delete a Vendor" do
+    it "can destroy a Vendor from the database" do
+      vendor = create(:vendor)
 
-    expect(Vendor.count).to eq(1)
+      expect(Vendor.count).to eq(1)
 
-    delete "/api/v0/vendors/#{vendor.id}"
+      delete "/api/v0/vendors/#{vendor.id}"
 
-    expect(response).to be_successful
-    expect(response.code).to eq("204")
-    expect(response).to have_http_status(:no_content)
-    expect(Vendor.count).to eq(0)
-    expect{Vendor.find(vendor.id)}.to raise_error(ActiveRecord::RecordNotFound)
+      expect(response).to be_successful
+      expect(response.code).to eq("204")
+      expect(response).to have_http_status(:no_content)
+      expect(Vendor.count).to eq(0)
+      expect{Vendor.find(vendor.id)}.to raise_error(ActiveRecord::RecordNotFound)
 
-    ### Alternate test to check for destroyed Vendor
+      ### Alternate test to check for destroyed Vendor
 
-    vendor2 = create(:vendor)
+      vendor2 = create(:vendor)
 
-    expect{ delete "/api/v0/vendors/#{vendor2.id}" }.to change(Vendor, :count).by(-1)
-    expect{Vendor.find(vendor2.id)}.to raise_error(ActiveRecord::RecordNotFound)
-  end
+      expect{ delete "/api/v0/vendors/#{vendor2.id}" }.to change(Vendor, :count).by(-1)
+      expect{Vendor.find(vendor2.id)}.to raise_error(ActiveRecord::RecordNotFound)
+    end
 
-  it "can destroy a Vendor along with it's association but not Market" do
-    # Because Vendor has a many to many relationship with a joins table, you can not delete Vendor without also
-    # Deleting MarketVendor, it will raise a foreign key restraint error, therefore associations need to be set up
-    # So that when you destroy Vendor, you also destroy it's associated records
+    it "can destroy a Vendor along with it's association but not Market" do
+      # Because Vendor has a many to many relationship with a joins table, you can not delete Vendor without also
+      # Deleting MarketVendor, it will raise a foreign key restraint error, therefore associations need to be set up
+      # So that when you destroy Vendor, you also destroy it's associated records
 
-    vendor = create(:vendor)
-    market = create(:market)
-    market_vendor = MarketVendor.create!(market_id: market.id, vendor_id: vendor.id)
+      vendor = create(:vendor)
+      market = create(:market)
+      market_vendor = MarketVendor.create!(market_id: market.id, vendor_id: vendor.id)
 
-    expect(Vendor.count).to eq(1)
-    expect(MarketVendor.count).to eq(1)
-    expect(Market.count).to eq(1)
+      expect(Vendor.count).to eq(1)
+      expect(MarketVendor.count).to eq(1)
+      expect(Market.count).to eq(1)
 
-    delete "/api/v0/vendors/#{vendor.id}"
+      delete "/api/v0/vendors/#{vendor.id}"
 
-    expect(response).to be_successful
-    expect(response.code).to eq("204")
-    expect(response).to have_http_status(:no_content)
-    expect(Vendor.count).to eq(0)
-    expect{Vendor.find(vendor.id)}.to raise_error(ActiveRecord::RecordNotFound)
-    expect(MarketVendor.count).to eq(0)
-    expect{MarketVendor.find(market_vendor.id)}.to raise_error(ActiveRecord::RecordNotFound)
-    expect(Market.count).to eq(1)
-    expect(Market.find(market.id)).to eq(market)
+      expect(response).to be_successful
+      expect(response.code).to eq("204")
+      expect(response).to have_http_status(:no_content)
+      expect(Vendor.count).to eq(0)
+      expect{Vendor.find(vendor.id)}.to raise_error(ActiveRecord::RecordNotFound)
+      expect(MarketVendor.count).to eq(0)
+      expect{MarketVendor.find(market_vendor.id)}.to raise_error(ActiveRecord::RecordNotFound)
+      expect(Market.count).to eq(1)
+      expect(Market.find(market.id)).to eq(market)
+    end
+
+    it "has a 404 error when Vendor id is not valid" do
+      delete "/api/v0/vendors/1"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:status]).to eq("404")
+      expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=1")
+    end
   end
 
   it "can create a new vendor" do
