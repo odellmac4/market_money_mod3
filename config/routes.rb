@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     namespace :v0 do
       resources :markets, only: [:index]
       resources :vendors, only: [:show]
+      resources :market_vendors, only: [:create]
     end
   end
 end
