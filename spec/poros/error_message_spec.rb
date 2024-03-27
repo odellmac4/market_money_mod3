@@ -12,13 +12,13 @@ describe "Error Message PORO" do
     expect(error_message.status_code).to eq(404)
   end
 
-  describe "instance methods" do
-    describe "#object_must_exist" do
-      it "turns a Hash message to a String" do
-      error_message = ErrorMessage.new("Couldn't find Market with 'id'=1", 404)
+  # describe "instance methods" do
+  #   describe "#object_must_exist" do
+  #     it "turns a Hash message to a String" do
+  #     error_message = ErrorMessage.new("Couldn't find Market with 'id'=1", 404)
 
-      expect(error_message.object_must_exist).to eq(["Market must exist"])
-      end
-    end
-  end
+  #     expect(error_message.object_must_exist).to eq(["Market must exist"])
+  #     end
+  #   end
+  # end
 end

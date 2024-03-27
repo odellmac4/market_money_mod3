@@ -49,7 +49,10 @@ describe "Market Vendors API" do
       post "/api/v0/market_vendors", headers: @headers, params: JSON.generate(body)
 
       expect(response.status).to eq(422)
-      expect(response.errors)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:detail]).to eq("Validation failed: Market vendor association between market with market_id=#{@market.id} and vendor_id=#{@vendor.id} already exists")
     end
   end
 end

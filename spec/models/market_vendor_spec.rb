@@ -1,22 +1,50 @@
 require 'rails_helper'
 
 RSpec.describe MarketVendor do
+  before do
+    @vendor = create(:vendor)
+    @market = create(:market)
+  end
+
   it {should belong_to(:market)}
   it {should belong_to(:vendor)}
 
   describe "instace methods" do
-    describe "valid_parameters?" do
+    # describe "valid_parameters2" do
+    #   it "raises an error when parameters are not valid" do
+    #     vendor = create(:vendor)
+    #     market = create(:market)
+    #     market_vendor = MarketVendor.new(vendor_id: 1, market_id: market.id)
+    #     market_vendor.valid?
+    #     require 'pry'; binding.pry
+    #     expect(market_vendor.errors[:valid_ids].first).to eq("Vendor must exist")
+
+    #     market_vendor2 = MarketVendor.new(vendor_id: vendor.id, market_id: 1)
+
+    #     expect(market_vendor2.errors[:valid_ids].first).to eq("Market must exist")
+    #   end
+    # end
+
+    describe "valid_parameters" do
       it "raises an error when parameters are not valid" do
+        market_vendor = MarketVendor.new(vendor_id: 1, market_id: @market.id)
+
+        expect { market_vendor.valid_parameters }.to raise_error(ActiveRecord::RecordNotFound, "Vendor must exist")
+
+        market_vendor = MarketVendor.new(vendor_id: @vendor.id, market_id: 1)
+
+        expect { market_vendor.valid_parameters }.to raise_error(ActiveRecord::RecordNotFound, "Market must exist")
+      end
+    end
+
+    describe "valid_market_vendor" do
+      it "raises an error when a market_vendor already exists" do
         vendor = create(:vendor)
         market = create(:market)
-        market_vendor = MarketVendor.new(vendor_id: 1, market_id: market.id)
+        MarketVendor.create(vendor_id: vendor.id, market_id: market.id)
+        market_vendor2 = MarketVendor.new(vendor_id: vendor.id, market_id: market.id)
 
-        ## Brackets are used here 
-        expect { market_vendor.valid_parameters? }.to raise_error(ActiveRecord::RecordNotFound, "Vendor must exist")
-
-        market_vendor = MarketVendor.new(vendor_id: vendor.id, market_id: 1)
-
-        expect { market_vendor.valid_parameters? }.to raise_error(ActiveRecord::RecordNotFound, "Market must exist")
+        expect { market_vendor2.valid_market_vendor }.to raise_error(ActiveRecord::RecordNotUnique, "Market vendor association between market with market_id=#{market.id} and vendor_id=#{vendor.id} already exists")
       end
     end
   end
