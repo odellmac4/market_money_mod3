@@ -32,6 +32,24 @@ describe "Market Vendors API" do
 
       post "/api/v0/market_vendors", headers: @headers, params: JSON.generate(body)
       expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:detail]).to eq("Validation failed: Market must exist")
+    end
+
+    xit "has a 422 error" do
+      MarketVendor.create!(market_id: @market.id, vendor_id: @vendor.id)
+      body =    {
+        "market_id": @market.id,
+        "vendor_id": @vendor.id
+      }
+
+      post "/api/v0/market_vendors", headers: @headers, params: JSON.generate(body)
+
+      expect(response.status).to eq(422)
+      expect(response.errors)
     end
   end
 end

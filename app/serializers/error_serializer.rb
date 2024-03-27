@@ -17,11 +17,9 @@ class ErrorSerializer
   def serializer_validation
     {
       errors: [
-        @error_object.each do |object, message|
           {
-            "detail": "Validation failed: #{object} #{message}"
+            detail: "Validation failed: #{@error_object.hash_message_to_s.first}"
           }
-        end
         ]
       }
   end
