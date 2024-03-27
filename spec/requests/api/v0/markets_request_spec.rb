@@ -59,5 +59,15 @@ describe "Markets Api" do
     expect(market_info).to have_key(:attributes)
     expect(market_info[:attributes]).to be_a(Hash)
 
+    expect(market_info[:attributes][:name]).to be_a(String)
+    expect(market_info[:attributes][:street]).to be_a(String)
+    expect(market_info[:attributes][:city]).to be_a(String)
+    expect(market_info[:attributes][:county]).to be_a(String)
+    expect(market_info[:attributes][:state]).to be_a(String)
+    expect(market_info[:attributes][:zip]).to be_a(String)
+    expect(market_info[:attributes][:lat]).to be_a(String)
+    expect(market_info[:attributes][:lon]).to be_a(String)
+    expect(market_info[:attributes][:vendor_count]).to be_an(Integer)
+
   end
 end
