@@ -26,4 +26,25 @@ describe "Vendors API" do
     expect(vendor_attributes[:contact_phone]).to be_a(String)
     expect(vendor_attributes[:credit_accepted]).to eq(true)
   end
+
+  it "can destroy a Vendor" do
+    vendor = create(:vendor)
+
+    expect(Vendor.count).to eq(1)
+
+    delete "/api/v0/vendors/#{vendor.id}"
+
+    expect(response).to be_successful
+    expect(response.code).to eq("204")
+    expect(response).to have_http_status(:no_content)
+    expect(Vendor.count).to eq(0)
+    expect{Vendor.find(vendor.id)}.to raise_error(ActiveRecord::RecordNotFound)
+
+    ### Alternate test to check for destroyed Vendor
+
+    vendor2 = create(:vendor)
+
+    expect{ delete "/api/v0/vendors/#{vendor2.id}" }.to change(Vendor, :count).by(-1)
+    expect{Vendor.find(vendor2.id)}.to raise_error(ActiveRecord::RecordNotFound)
+  end
 end
