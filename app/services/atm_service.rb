@@ -8,7 +8,6 @@ class AtmService
 
   def get_response(lat, lon)
     response = conn.get("search/2/categorySearch/atm.json?countrySet=US&lat=#{lat}&lon=#{lon}&language=en-US&view=Unified&relatedPois=off")
-    require 'pry'; binding.pry
 
     JSON.parse(response.body, symbolize_names: true)
   end

@@ -245,9 +245,6 @@
         "lines": [
           1,
           1,
-          null,
-          null,
-          null,
           1,
           1,
           1,
@@ -256,14 +253,13 @@
           null,
           1,
           1,
-          1,
           null,
-          0,
+          1,
           null,
           null
         ]
       }
     },
-    "timestamp": 1711659238
+    "timestamp": 1711660295
   }
 }
