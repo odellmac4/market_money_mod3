@@ -1,16 +1,16 @@
 class AtmFacade
-  attr_reader :atm
-
-  def initialize(market)
-    @market = market
+  def initialize(lat, lon)
+    @lat = lat
+    @lon = lon
+    @service = AtmService.new
   end
 
   def list_of_atms
-    get_response(@market.lat, @market.lon)[:results]
+    @service.get_response(@lat, @lon)[:results]
   end
 
   def create_atms
-    list_of_atms.each do |atm|
+    list_of_atms.map do |atm|
       Atm.new(atm)
     end
   end
