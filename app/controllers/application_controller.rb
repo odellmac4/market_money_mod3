@@ -5,12 +5,11 @@ class ApplicationController < ActionController::API
   private
 
   def not_found_response(exception)
-    if exception.id.include?(:vendor_id) && exception.id.include?(:market_id)
+    if exception.id.class == Integer
       render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404))
-    .serializer_validation, status: :not_found
-    else
-      render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404))
-    .serialize_json, status: :not_found
+      .serialize_json, status: :not_found
+    elsif exception.id.include?(:vendor_id) && exception.id.include?(:market_id)
+      render json: ErrorSerializer.serializer_market_vendor_validation(exception, 404), status: :not_found
     end
   end
 

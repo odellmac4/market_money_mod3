@@ -23,4 +23,14 @@ class ErrorSerializer
         ]
       }
   end
+
+  def self.serializer_market_vendor_validation(error, status)
+    {
+      errors: [
+          {
+            detail: "Couldn't find MarketVendor with vendor_id=#{error.id[:vendor_id]} AND market_id=#{error.id[:market_id]}"
+          }
+        ]
+      }
+  end
 end
