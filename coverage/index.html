@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-03-28T16:19:10-07:00">2024-03-28T16:19:10-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-03-28T16:32:33-07:00">2024-03-28T16:32:33-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -1381,7 +1381,7 @@
 
             
 
-            <code class="ruby">    @facade = AtmFacade.new(market.lat, market.lon)</code>
+            <code class="ruby">    @atm_facade = AtmFacade.new(market.lat, market.lon)</code>
           </li>
         </div>
       
@@ -1403,7 +1403,7 @@
 
             
 
-            <code class="ruby">    render json: AtmSerializer.new(@facade.sorted_atms).serialize_data, status: :ok</code>
+            <code class="ruby">    render json: AtmSerializer.new(@atm_facade.sorted_atms).serialize_data, status: :ok</code>
           </li>
         </div>
       
