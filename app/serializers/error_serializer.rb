@@ -33,14 +33,4 @@ class ErrorSerializer
         ]
       }
   end
-
-  def market_or_vendor_nil
-    {
-      errors: [
-        {
-          detail: "Validation failed: Market or Vendor must exist"
-        }
-      ]
-    }
-  end
 end

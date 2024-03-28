@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
   private
 
   def not_found_response(exception)
-    if exception.id.class == Integer
+    if exception.id.is_a?(String) || exception.id.is_a?(Integer)
       render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404))
       .serialize_json, status: :not_found
     elsif exception.id.include?(:vendor_id) && exception.id.include?(:market_id)
