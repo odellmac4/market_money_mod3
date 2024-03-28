@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-03-28T16:17:50-07:00">2024-03-28T16:17:50-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-03-28T16:19:10-07:00">2024-03-28T16:19:10-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>561</b> relevant lines,
-    <span class="green"><b>561</b> lines covered</span> and
+    <b>562</b> relevant lines,
+    <span class="green"><b>562</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -458,11 +458,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#7ee1a8cb10814776f67599cede53361e48949499" class="src_link" title="spec/requests/api/v0/nearest_atm_request_spec.rb">spec/requests/api/v0/nearest_atm_request_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">51</td>
-            <td class="cell--number">28</td>
-            <td class="cell--number">28</td>
+            <td class="cell--number">54</td>
+            <td class="cell--number">29</td>
+            <td class="cell--number">29</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">4.21</td>
+            <td class="cell--number">4.10</td>
             
           </tr>
         
@@ -10569,8 +10569,8 @@
     
 
     <div class="t-line-summary">
-      <b>28</b> relevant lines.
-      <span class="green"><b>28</b> lines covered</span> and
+      <b>29</b> relevant lines.
+      <span class="green"><b>29</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -10615,128 +10615,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="4">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  it &quot;can find the nearest atms to a Market&quot;, :vcr do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="5">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    market = Market.create!(</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="6">
-            
-            
-
-            
-
-            <code class="ruby">      name: &quot;Store&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="7">
-            
-            
-
-            
-
-            <code class="ruby">      street: &quot;3902 Central Avenue&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="8">
-            
-            
-
-            
-
-            <code class="ruby">      city: &quot;Maricopa&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="9">
-            
-            
-
-            
-
-            <code class="ruby">      state: &quot;Arizona&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="10">
-            
-            
-
-            
-
-            <code class="ruby">      zip: &quot;95626&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="11">
-            
-            
-
-            
-
-            <code class="ruby">      lat: &quot;24.23423&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="12">
-            
-            
-
-            
-
-            <code class="ruby">      lon: &quot;-83.343&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="13">
-            
-            
-
-            
-
-            <code class="ruby">      vendor_count: 0</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="14">
-            
-            
-
-            
-
-            <code class="ruby">    )</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="15">
+          <li class="never" data-hits="" data-linenumber="4">
             
             
 
@@ -10747,13 +10626,134 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="16">
+          <li class="covered" data-hits="1" data-linenumber="5">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    get &quot;/api/v0/markets/#{market.id}/nearest_atms&quot;</code>
+            <code class="ruby">  describe &quot;End Point 11 - Get Cash Dispensers Near a Market&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="6">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;can find the nearest atms to a Market&quot;, :vcr do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="7">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      market = Market.create!(</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="8">
+            
+            
+
+            
+
+            <code class="ruby">        name: &quot;Store&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="9">
+            
+            
+
+            
+
+            <code class="ruby">        street: &quot;3902 Central Avenue&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="10">
+            
+            
+
+            
+
+            <code class="ruby">        city: &quot;Maricopa&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="11">
+            
+            
+
+            
+
+            <code class="ruby">        state: &quot;Arizona&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="12">
+            
+            
+
+            
+
+            <code class="ruby">        zip: &quot;95626&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="13">
+            
+            
+
+            
+
+            <code class="ruby">        lat: &quot;24.23423&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="14">
+            
+            
+
+            
+
+            <code class="ruby">        lon: &quot;-83.343&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="15">
+            
+            
+
+            
+
+            <code class="ruby">        vendor_count: 0</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="16">
+            
+            
+
+            
+
+            <code class="ruby">      )</code>
           </li>
         </div>
       
@@ -10775,23 +10775,12 @@
 
             
 
-            <code class="ruby">    expect(response).to be_successful</code>
+            <code class="ruby">      get &quot;/api/v0/markets/#{market.id}/nearest_atms&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="19">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(response.status).to eq(200)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="20">
+          <li class="never" data-hits="" data-linenumber="19">
             
             
 
@@ -10802,13 +10791,24 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="1" data-linenumber="20">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response).to be_successful</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="covered" data-hits="1" data-linenumber="21">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    data = JSON.parse(response.body, symbolize_names: true)</code>
+            <code class="ruby">      expect(response.status).to eq(200)</code>
           </li>
         </div>
       
@@ -10830,29 +10830,29 @@
 
             
 
-            <code class="ruby">    expect(data).to be_a(Hash)</code>
+            <code class="ruby">      data = JSON.parse(response.body, symbolize_names: true)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="24">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(data[:data]).to be_an(Array)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="25">
+          <li class="never" data-hits="" data-linenumber="24">
             
             
 
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="25">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(data).to be_a(Hash)</code>
           </li>
         </div>
       
@@ -10863,29 +10863,29 @@
 
             
 
-            <code class="ruby">    data[:data].each do |atm|</code>
+            <code class="ruby">      expect(data[:data]).to be_an(Array)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="27">
-            <span class="hits">10</span>
+          <li class="never" data-hits="" data-linenumber="27">
+            
             
 
             
 
-            <code class="ruby">      expect(atm.keys).to eq([:id, :type, :attributes])</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="28">
-            <span class="hits">10</span>
+          <li class="covered" data-hits="1" data-linenumber="28">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      expect(atm[:id]).to eq(nil)</code>
+            <code class="ruby">      data[:data].each do |atm|</code>
           </li>
         </div>
       
@@ -10896,7 +10896,7 @@
 
             
 
-            <code class="ruby">      expect(atm[:type]).to eq(&quot;atm&quot;)</code>
+            <code class="ruby">        expect(atm.keys).to eq([:id, :type, :attributes])</code>
           </li>
         </div>
       
@@ -10907,7 +10907,7 @@
 
             
 
-            <code class="ruby">      expect(atm[:attributes]).to be_a(Hash)</code>
+            <code class="ruby">        expect(atm[:id]).to eq(nil)</code>
           </li>
         </div>
       
@@ -10918,7 +10918,7 @@
 
             
 
-            <code class="ruby">      expect(atm[:attributes].keys).to eq([:name, :address, :lat, :lon, :distance])</code>
+            <code class="ruby">        expect(atm[:type]).to eq(&quot;atm&quot;)</code>
           </li>
         </div>
       
@@ -10929,7 +10929,7 @@
 
             
 
-            <code class="ruby">      expect(atm[:attributes][:name]).to be_a(String)</code>
+            <code class="ruby">        expect(atm[:attributes]).to be_a(Hash)</code>
           </li>
         </div>
       
@@ -10940,7 +10940,7 @@
 
             
 
-            <code class="ruby">      expect(atm[:attributes][:address]).to be_a(String)</code>
+            <code class="ruby">        expect(atm[:attributes].keys).to eq([:name, :address, :lat, :lon, :distance])</code>
           </li>
         </div>
       
@@ -10951,7 +10951,7 @@
 
             
 
-            <code class="ruby">      expect(atm[:attributes][:lat]).to be_a(Float)</code>
+            <code class="ruby">        expect(atm[:attributes][:name]).to be_a(String)</code>
           </li>
         </div>
       
@@ -10962,7 +10962,7 @@
 
             
 
-            <code class="ruby">      expect(atm[:attributes][:lon]).to be_a(Float)</code>
+            <code class="ruby">        expect(atm[:attributes][:address]).to be_a(String)</code>
           </li>
         </div>
       
@@ -10973,29 +10973,29 @@
 
             
 
-            <code class="ruby">      expect(atm[:attributes][:distance]).to be_a(Float)</code>
+            <code class="ruby">        expect(atm[:attributes][:lat]).to be_a(Float)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="37">
-            
-            
-
+          <li class="covered" data-hits="10" data-linenumber="37">
+            <span class="hits">10</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">        expect(atm[:attributes][:lon]).to be_a(Float)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="38">
-            
-            
-
+          <li class="covered" data-hits="10" data-linenumber="38">
+            <span class="hits">10</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">        expect(atm[:attributes][:distance]).to be_a(Float)</code>
           </li>
         </div>
       
@@ -11006,40 +11006,40 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="40">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="40">
+            
             
 
             
 
-            <code class="ruby">  it &quot;has a 404 error&quot; do</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="41">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    get &quot;/api/v0/markets/1/nearest_atms&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="42">
+          <li class="never" data-hits="" data-linenumber="41">
             
             
 
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="42">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;has a 404 error&quot; do</code>
           </li>
         </div>
       
@@ -11050,23 +11050,12 @@
 
             
 
-            <code class="ruby">    expect(response).to_not be_successful</code>
+            <code class="ruby">      get &quot;/api/v0/markets/1/nearest_atms&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="44">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    expect(response.status).to eq(404)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="45">
+          <li class="never" data-hits="" data-linenumber="44">
             
             
 
@@ -11077,13 +11066,24 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="1" data-linenumber="45">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response).to_not be_successful</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="covered" data-hits="1" data-linenumber="46">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    data = JSON.parse(response.body, symbolize_names: true)</code>
+            <code class="ruby">      expect(response.status).to eq(404)</code>
           </li>
         </div>
       
@@ -11105,23 +11105,56 @@
 
             
 
-            <code class="ruby">    expect(data[:errors]).to be_a(Array)</code>
+            <code class="ruby">      data = JSON.parse(response.body, symbolize_names: true)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="49">
+          <li class="never" data-hits="" data-linenumber="49">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="50">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    expect(data[:errors].first[:detail]).to eq(&quot;Couldn&#39;t find Market with &#39;id&#39;=1&quot;)</code>
+            <code class="ruby">      expect(data[:errors]).to be_an(Array)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="50">
+          <li class="covered" data-hits="1" data-linenumber="51">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(data[:errors].first[:detail]).to eq(&quot;Couldn&#39;t find Market with &#39;id&#39;=1&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="52">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="53">
             
             
 
@@ -11132,7 +11165,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="51">
+          <li class="never" data-hits="" data-linenumber="54">
             
             
 
