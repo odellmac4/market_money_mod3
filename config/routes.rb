@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v0 do
       resources :markets, only: [:index, :show]
+      
       resources :market_vendors, only: [:create]
+      delete "/market_vendors", to: "market_vendors#destroy"
+
       resources :vendors, only: [:show, :destroy, :create]
     end
   end

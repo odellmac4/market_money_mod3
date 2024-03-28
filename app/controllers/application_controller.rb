@@ -5,8 +5,14 @@ class ApplicationController < ActionController::API
   private
 
   def not_found_response(exception)
-    render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404))
+    
+    if exception.id.include?(:vendor_id) && exception.id.include?(:market_id)
+      render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404))
+    .serializer_validation, status: :not_found
+    else
+      render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404))
     .serialize_json, status: :not_found
+    end
   end
 
   def invalid_response(exception)
