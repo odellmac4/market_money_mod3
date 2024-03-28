@@ -35,7 +35,7 @@ describe "Market Vendors API" do
       data = JSON.parse(response.body, symbolize_names: true)
 
       expect(data[:errors]).to be_a(Array)
-      expect(data[:errors].first[:detail]).to eq("Validation failed: Market must exist, Market can't be blank")
+      expect(data[:errors].first[:detail]).to eq("Validation failed: Market can't be blank")
     end
 
     it "has a 404 error when invalid vendor_id/market_id are passed" do
