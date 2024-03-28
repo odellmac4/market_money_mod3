@@ -150,6 +150,9 @@ describe "Vendors API" do
     it "can get all Vendors for a Market" do
       market = create(:market)
       vendors = create_list(:vendor)
+      vendors.each do |vendor|
+        market.vendors << vendor
+      end
 
       get "/api/v0/markets/#{market.id}/vendors"
 
