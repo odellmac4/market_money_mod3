@@ -24,7 +24,7 @@ describe "Market Vendors API" do
 
   it "can destroy a MarketVendor" do
     market_vendor = MarketVendor.create!(market_id: @market.id, vendor_id: @vendor.id)
-    
+
     expect(MarketVendor.count).to eq(1)
 
     body = {
@@ -54,8 +54,9 @@ describe "Market Vendors API" do
 
       data = JSON.parse(response.body, symbolize_names: true)
 
+      expect(data.keys).to eq([:errors])
       expect(data[:errors]).to be_a(Array)
-      expect(data[:errors].first[:detail]).to eq("Validation failed: Market must exist, Market can't be blank")
+      expect(data[:errors].first[:detail]).to eq("Validation failed: Market or Vendor must exist")
     end
 
     it "has a 404 error when Vendor or Market ids are not valid records" do
@@ -71,7 +72,7 @@ describe "Market Vendors API" do
       data = JSON.parse(response.body, symbolize_names: true)
 
       expect(data[:errors]).to be_a(Array)
-      expect(data[:errors].first[:title]).to eq("Couldn't find Market with 'id'=1")
+      expect(data[:errors].first[:detail]).to eq("Couldn't find Market with 'id'=1")
     end
 
     it "has a 422 error" do
@@ -84,7 +85,7 @@ describe "Market Vendors API" do
       post "/api/v0/market_vendors", headers: @headers, params: JSON.generate(body)
 
       expect(response.status).to eq(422)
-      
+
       data = JSON.parse(response.body, symbolize_names: true)
       expect(data[:errors]).to be_a(Array)
       expect(data[:errors].first[:detail]).to eq("Validation failed: Market vendor association between market with market_id=#{@market.id} and vendor_id=#{@vendor.id} already exists")
@@ -92,7 +93,7 @@ describe "Market Vendors API" do
 
     it "has a 404 error when market_id and vendor_id is invalid" do
       market_vendor = MarketVendor.create!(market_id: @market.id, vendor_id: @vendor.id)
-  
+
       body = {
       "market_id": 1,
       "vendor_id": 2
@@ -104,7 +105,7 @@ describe "Market Vendors API" do
       expect(response.status).to eq(404)
 
       data = JSON.parse(response.body, symbolize_names: true)
-      
+
       expect(data[:errors]).to be_a(Array)
       expect(data[:errors].first[:detail]).to eq("Couldn't find MarketVendor with vendor_id=2 AND market_id=1")
     end
