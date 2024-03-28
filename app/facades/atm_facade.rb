@@ -1,7 +1,7 @@
 class AtmFacade
   def initialize(lat, lon)
-    @lat = lat
-    @lon = lon
+    @lat = lat.to_f
+    @lon = lon.to_f
     @service = AtmService.new
   end
 
