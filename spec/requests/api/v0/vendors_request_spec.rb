@@ -144,6 +144,6 @@ describe "Vendors API" do
     # binding.pry
 
     expect(data[:errors]).to be_a Array
-    expect(data[:errors].first).to eq("Validation failed: Name can't be blank and Contact phone can't be blank")
+    expect(data[:errors].first[:detail]).to eq("Validation failed: Name can't be blank, Contact phone can't be blank")
   end
 end
