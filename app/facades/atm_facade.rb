@@ -14,4 +14,8 @@ class AtmFacade
       Atm.new(atm)
     end
   end
+
+  def sorted_atms
+    create_atms.sort_by{ |atm| atm.distance }
+  end
 end

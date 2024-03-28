@@ -32,5 +32,17 @@ RSpec.describe AtmFacade do
         end
       end
     end
+
+    describe "#sorted_atms" do
+      it "sorts the atms by closest to farthest", :vcr do
+        sorted_atms = @atm_facade.sorted_atms
+
+        consecutive_sorted = sorted_atms.each_cons(2).all? do |first, second|
+          first.distance <= second.distance
+        end
+
+        expect(consecutive_sorted).to eq(true)
+      end
+    end
   end
 end
