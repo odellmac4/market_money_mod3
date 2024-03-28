@@ -1,0 +1,121 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.tomtom.com/search/2/categorySearch/atm.json?countrySet=US&key=DONT_SHARE_MY_TOM_TOM_KEY&language=en-US&lat=38.9169984&lon=-77.0320505&relatedPois=off&view=Unified
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Faraday v2.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 28 Mar 2024 21:43:29 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Tracking-Id:
+      - 9b093243-0ad1-4d60-8846-7641aa87c271
+      Access-Control-Expose-Headers:
+      - Tracking-ID
+      Server:
+      - tomtom
+      X-Tomtom-Processed-By:
+      - westus2
+      X-Tomtom-Message-Id:
+      - 988647e2-fe6e-410f-935f-6a659504c9a1
+      X-Tomtom-Upstream-Service-Time:
+      - '333'
+      X-Tomtom-Attempt-Count:
+      - '1'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"summary":{"query":"atm","queryType":"NON_NEAR","queryTime":317,"numResults":10,"offset":0,"totalResults":100,"fuzzyLevel":1,"geoBias":{"lat":38.9169984,"lon":-77.0320505}},"results":[{"type":"POI","id":"WOUuLXiY1DeI2BvyNI5FnA","score":2.5745279789,"dist":9.56959,"info":"search:ta:840117000001946-US","poi":{"name":"Pnc
+        Bank, National Association","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetName":"14th Street Northwest","municipality":"Washington","neighbourhood":"U
+        Street","countrySecondarySubdivision":"District of Columbia","countrySubdivision":"DC","countrySubdivisionName":"District
+        of Columbia","countrySubdivisionCode":"DC","postalCode":"20009","extendedPostalCode":"20009-4431","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"14th Street Northwest,
+        Washington, DC 20009","localName":"Washington"},"position":{"lat":38.916967,"lon":-77.031948},"viewport":{"topLeftPoint":{"lat":38.91787,"lon":-77.0331},"btmRightPoint":{"lat":38.91607,"lon":-77.03079}},"entryPoints":[{"type":"main","position":{"lat":38.91697,"lon":-77.03195}}]},{"type":"POI","id":"5676W9Dc6JTr3vcPQGnimg","score":2.5745275021,"dist":37.583172,"info":"search:ta:840119000467536-US","poi":{"name":"Prosperity
+        Bank","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1356","streetName":"U Street Northwest","municipality":"Washington","neighbourhood":"U
+        Street","countrySecondarySubdivision":"District of Columbia","countrySubdivision":"DC","countrySubdivisionName":"District
+        of Columbia","countrySubdivisionCode":"DC","postalCode":"20009","extendedPostalCode":"20009-4445","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1356 U Street Northwest,
+        Washington, DC 20009","localName":"Washington"},"position":{"lat":38.916836,"lon":-77.03167},"viewport":{"topLeftPoint":{"lat":38.91774,"lon":-77.03283},"btmRightPoint":{"lat":38.91594,"lon":-77.03051}},"entryPoints":[{"type":"main","position":{"lat":38.917,"lon":-77.03167}}]},{"type":"POI","id":"WOHleMcF6iy3QOUwOwGKbA","score":2.5745275021,"dist":31.728607,"info":"search:ta:840117000006552-US","poi":{"name":"Capital
+        One Bank","phone":"+1 202-890-4518","brands":[{"name":"Capital One Bank"}],"categorySet":[{"id":7397}],"url":"www.capitalonebank.com/?external_id=ENTSOC_YX_YextRetail_Profile_0101","categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1947","streetName":"14th Street
+        Northwest","municipality":"Washington","neighbourhood":"U Street","countrySecondarySubdivision":"District
+        of Columbia","countrySubdivision":"DC","countrySubdivisionName":"District
+        of Columbia","countrySubdivisionCode":"DC","postalCode":"20009","extendedPostalCode":"20009-4448","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1947 14th Street Northwest,
+        Washington, DC 20009","localName":"Washington"},"position":{"lat":38.916874,"lon":-77.031721},"viewport":{"topLeftPoint":{"lat":38.91777,"lon":-77.03288},"btmRightPoint":{"lat":38.91597,"lon":-77.03057}},"entryPoints":[{"type":"main","position":{"lat":38.91688,"lon":-77.03195}}]},{"type":"POI","id":"lle19wafVfNzbiDHlHse2Q","score":2.5745272636,"dist":41.938259,"info":"search:ta:840119000331784-US","poi":{"name":"Metabank","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1939","streetName":"14th Street
+        Northwest","municipality":"Washington","neighbourhood":"U Street","countrySecondarySubdivision":"District
+        of Columbia","countrySubdivision":"DC","countrySubdivisionName":"District
+        of Columbia","countrySubdivisionCode":"DC","postalCode":"20009","extendedPostalCode":"20009-4448","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1939 14th Street Northwest,
+        Washington, DC 20009","localName":"Washington"},"position":{"lat":38.916729,"lon":-77.031712},"viewport":{"topLeftPoint":{"lat":38.91763,"lon":-77.03287},"btmRightPoint":{"lat":38.91583,"lon":-77.03056}},"entryPoints":[{"type":"main","position":{"lat":38.91675,"lon":-77.03195}}]},{"type":"POI","id":"1Qq3mZzGBBk04e67uvMj2Q","score":2.5745270252,"dist":51.059878,"info":"search:ta:840119000331504-US","poi":{"name":"Wells
+        Fargo Washington","phone":"+1 202-594-3357","brands":[{"name":"Wells Fargo"}],"categorySet":[{"id":7397}],"url":"www.wellsfargo.com","categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1934","streetName":"14th Street
+        Northwest","municipality":"Washington","neighbourhood":"U Street","countrySecondarySubdivision":"District
+        of Columbia","countrySubdivision":"DC","countrySubdivisionName":"District
+        of Columbia","countrySubdivisionCode":"DC","postalCode":"20009","extendedPostalCode":"20009-4431","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1934 14th Street Northwest,
+        Washington, DC 20009","localName":"Washington"},"position":{"lat":38.916554,"lon":-77.032199},"viewport":{"topLeftPoint":{"lat":38.91745,"lon":-77.03335},"btmRightPoint":{"lat":38.91565,"lon":-77.03104}},"entryPoints":[{"type":"main","position":{"lat":38.91655,"lon":-77.03196}}]},{"type":"POI","id":"uDu2Qv4UfcoRWyJJBKXaqA","score":2.5745270252,"dist":52.66529,"info":"search:ta:840119000338152-US","poi":{"name":"Prosperity
+        Bank","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1348","streetName":"U Street Northwest","municipality":"Washington","neighbourhood":"U
+        Street","countrySecondarySubdivision":"District of Columbia","countrySubdivision":"DC","countrySubdivisionName":"District
+        of Columbia","countrySubdivisionCode":"DC","postalCode":"20009","extendedPostalCode":"20009-4445","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1348 U Street Northwest,
+        Washington, DC 20009","localName":"Washington"},"position":{"lat":38.916838,"lon":-77.031478},"viewport":{"topLeftPoint":{"lat":38.91774,"lon":-77.03263},"btmRightPoint":{"lat":38.91594,"lon":-77.03032}},"entryPoints":[{"type":"main","position":{"lat":38.91701,"lon":-77.03148}}]},{"type":"POI","id":"52-Vns26g6OfGFXnfyjTdA","score":2.5745270252,"dist":56.587201,"info":"search:ta:840119000448783-US","poi":{"name":"Prosperity
+        Bank","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"2011","streetName":"14th Street
+        Northwest","municipality":"Washington","neighbourhood":"U Street","countrySecondarySubdivision":"District
+        of Columbia","countrySubdivision":"DC","countrySubdivisionName":"District
+        of Columbia","countrySubdivisionCode":"DC","postalCode":"20009","extendedPostalCode":"20009-4436","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"2011 14th Street Northwest,
+        Washington, DC 20009","localName":"Washington"},"position":{"lat":38.917399,"lon":-77.031647},"viewport":{"topLeftPoint":{"lat":38.9183,"lon":-77.0328},"btmRightPoint":{"lat":38.9165,"lon":-77.03049}},"entryPoints":[{"type":"minor","position":{"lat":38.91738,"lon":-77.03195}},{"type":"main","position":{"lat":38.9174,"lon":-77.03195}}]},{"type":"POI","id":"D0i2nmyHfeglhs12f74wRA","score":2.5745265484,"dist":61.741606,"info":"search:ta:840119000272259-US","poi":{"name":"ATM
+        at Netbank Payment Systems","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"2013","streetName":"14th Street
+        Northwest","municipality":"Washington","neighbourhood":"U Street","countrySecondarySubdivision":"District
+        of Columbia","countrySubdivision":"DC","countrySubdivisionName":"District
+        of Columbia","countrySubdivisionCode":"DC","postalCode":"20009","extendedPostalCode":"20009-4436","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"2013 14th Street Northwest,
+        Washington, DC 20009","localName":"Washington"},"position":{"lat":38.917458,"lon":-77.03165},"viewport":{"topLeftPoint":{"lat":38.91836,"lon":-77.03281},"btmRightPoint":{"lat":38.91656,"lon":-77.03049}},"entryPoints":[{"type":"main","position":{"lat":38.91746,"lon":-77.03195}}]},{"type":"POI","id":"_1f2QMzTnW5PHi60oUPctA","score":2.57452631,"dist":69.368533,"info":"search:ta:840119000331975-US","poi":{"name":"Metabank","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"2015","streetName":"14th Street
+        Northwest","municipality":"Washington","neighbourhood":"U Street","countrySecondarySubdivision":"District
+        of Columbia","countrySubdivision":"DC","countrySubdivisionName":"District
+        of Columbia","countrySubdivisionCode":"DC","postalCode":"20009","extendedPostalCode":"20009-7563","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"2015 14th Street Northwest,
+        Washington, DC 20009","localName":"Washington"},"position":{"lat":38.917532,"lon":-77.031635},"viewport":{"topLeftPoint":{"lat":38.91843,"lon":-77.03279},"btmRightPoint":{"lat":38.91663,"lon":-77.03048}},"entryPoints":[{"type":"main","position":{"lat":38.91753,"lon":-77.03195}}]},{"type":"POI","id":"_6KnfxjxLfZIBNix9buOqA","score":2.5745260715,"dist":71.416792,"info":"search:ta:840119000330263-US","poi":{"name":"Prosperity
+        Bank","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1344","streetName":"U Street Northwest","municipality":"Washington","neighbourhood":"U
+        Street","countrySecondarySubdivision":"District of Columbia","countrySubdivision":"DC","countrySubdivisionName":"District
+        of Columbia","countrySubdivisionCode":"DC","postalCode":"20009","extendedPostalCode":"20009-4407","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1344 U Street Northwest,
+        Washington, DC 20009","localName":"Washington"},"position":{"lat":38.916772,"lon":-77.031278},"viewport":{"topLeftPoint":{"lat":38.91767,"lon":-77.03243},"btmRightPoint":{"lat":38.91587,"lon":-77.03012}},"entryPoints":[{"type":"main","position":{"lat":38.91701,"lon":-77.03131}}]}]}'
+  recorded_at: Thu, 28 Mar 2024 21:43:29 GMT
+recorded_with: VCR 6.2.0

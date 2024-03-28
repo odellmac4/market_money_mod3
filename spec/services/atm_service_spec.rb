@@ -22,6 +22,10 @@ RSpec.describe "AtmService" do
       expect(result[:poi]).to be_a(Hash)
       expect(result[:poi][:name]).to be_a(String)
       expect(result[:address]).to be_a(Hash)
+      expect(result[:address][:freeformAddress]).to be_a(String)
+      expect(result[:position]).to be_a(Hash)
+      expect(result[:position][:lat]).to be_a(Float)
+      expect(result[:position][:lon]).to be_a(Float)
     end
   end
 end
