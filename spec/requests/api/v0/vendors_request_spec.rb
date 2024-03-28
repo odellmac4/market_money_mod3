@@ -148,9 +148,11 @@ describe "Vendors API" do
 
   describe "Get all Vendors for a Market" do
     it "can get all Vendors for a Market" do
+      expect(MarketVendor.count).to eq(0)
+
       market = create(:market)
-      vendors = create_list(:vendor)
-      vendors.each do |vendor|
+      vendors = create_list(:vendor, 5)
+      vendors.sort.each do |vendor|
         market.vendors << vendor
       end
 
@@ -158,9 +160,19 @@ describe "Vendors API" do
 
       expect(response).to be_successful
 
+      expect(MarketVendor.count).to eq(5)
+
       data = JSON.parse(response.body, symbolize_names: true)
 
-      require 'pry'; binding.pry
+      expect(data[:data].size).to eq(5)
+        data[:data].each do |vendor_data|
+          expect(vendor_data[:attributes][:name]).to be_a(String)
+          expect(vendor_data[:attributes][:description]).to be_a(String)
+          expect(vendor_data[:attributes][:contact_name]).to be_a(String)
+          expect(vendor_data[:attributes][:contact_phone]).to be_a(String)
+          expect(vendor_data[:attributes][:credit_accepted].include?(true || false)).to eq(true)
+        end
+      end
     end
   end
 end
