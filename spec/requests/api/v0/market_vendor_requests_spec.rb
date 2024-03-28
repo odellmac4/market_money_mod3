@@ -89,6 +89,5 @@ describe "Market Vendors API" do
       expect(data[:errors]).to be_a(Array)
       expect(data[:errors].first[:detail]).to eq("Validation failed: Market vendor association between market with market_id=#{@market.id} and vendor_id=#{@vendor.id} already exists")
     end
-    end
   end
 end
