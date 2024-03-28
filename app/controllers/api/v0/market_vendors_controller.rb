@@ -16,11 +16,11 @@ class Api::V0::MarketVendorsController < ApplicationController
   end
 
   def destroy
-      if market_vendor
-        market_vendor.destroy
-      else
-        market_vendor_invalid
-      end
+    if market_vendor
+      market_vendor.destroy
+    else
+      market_vendor_invalid
+    end
   end
 
   private
