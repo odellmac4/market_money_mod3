@@ -14,7 +14,7 @@ class ErrorSerializer
     }
   end
 
-  def serializer_validation
+  def serializer_validation  
     {
       errors: [
           {

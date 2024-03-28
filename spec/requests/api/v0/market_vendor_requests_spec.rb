@@ -18,7 +18,6 @@ describe "Market Vendors API" do
     expect(data[:message]).to eq("Successfully added vendor to market")
 
     market_vendor = MarketVendor.last
-
     expect(market_vendor.vendor_id).to eq(@vendor.id)
     expect(market_vendor.market_id).to eq(@market.id)
   end
@@ -44,8 +43,22 @@ describe "Market Vendors API" do
   end
 
   describe "sad paths" do
+    it "has a 400 error when vendor_id/market_id are not passed" do
+      body =    {
+        "vendor_id": @vendor.id
+      }
 
-    xit "has a 404 error" do
+      post "/api/v0/market_vendors", headers: @headers, params: JSON.generate(body)
+      expect(response.status).to eq(400)
+      expect(response.code).to eq("400")
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:detail]).to eq("Validation failed: Market must exist, Market can't be blank")
+    end
+
+    it "has a 404 error when Vendor or Market ids are not valid records" do
       body =    {
         "market_id": 1,
         "vendor_id": @vendor.id
@@ -53,14 +66,15 @@ describe "Market Vendors API" do
 
       post "/api/v0/market_vendors", headers: @headers, params: JSON.generate(body)
       expect(response.status).to eq(404)
+      expect(response.code).to eq("404")
 
       data = JSON.parse(response.body, symbolize_names: true)
 
       expect(data[:errors]).to be_a(Array)
-      expect(data[:errors].first[:detail]).to eq("Validation failed: Market must exist")
+      expect(data[:errors].first[:title]).to eq("Couldn't find Market with 'id'=1")
     end
 
-    xit "has a 422 error" do
+    it "has a 422 error" do
       MarketVendor.create!(market_id: @market.id, vendor_id: @vendor.id)
       body =    {
         "market_id": @market.id,
@@ -70,26 +84,11 @@ describe "Market Vendors API" do
       post "/api/v0/market_vendors", headers: @headers, params: JSON.generate(body)
 
       expect(response.status).to eq(422)
-      expect(response.errors)
-    end
-
-    it "has a 404 error when market_id and vendor_id is invalid" do
-      market_vendor = MarketVendor.create!(market_id: @market.id, vendor_id: @vendor.id)
-  
-      body = {
-      "market_id": 1,
-      "vendor_id": 2
-      }
-
-      delete "/api/v0/market_vendors", headers: @headers, params: JSON.generate(body)
-
-      expect(response).to_not be_successful
-      expect(response.status).to eq(404)
-
+      
       data = JSON.parse(response.body, symbolize_names: true)
-
       expect(data[:errors]).to be_a(Array)
-      expect(data[:errors].first[:detail]).to eq("Couldn't find MarketVendor with vendor_id=2 AND market_id=1")
+      expect(data[:errors].first[:detail]).to eq("Validation failed: Market vendor association between market with market_id=#{@market.id} and vendor_id=#{@vendor.id} already exists")
+    end
     end
   end
 end

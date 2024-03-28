@@ -16,6 +16,6 @@ class ApplicationController < ActionController::API
 
   def invalid_response(exception)
     render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 400))
-    .serializer_validation, status: 400
+      .serializer_validation, status: :bad_request
   end
 end
