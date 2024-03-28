@@ -18,7 +18,7 @@ class ErrorSerializer
     {
       errors: [
           {
-            detail: "Validation failed: #{@error_object.hash_message_to_s.first}"
+            detail: @error_object.message
           }
         ]
       }
