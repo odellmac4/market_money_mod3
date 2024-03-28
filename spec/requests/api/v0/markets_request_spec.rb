@@ -70,4 +70,60 @@ describe "Markets Api" do
     expect(market_info[:attributes][:vendor_count]).to be_an(Integer)
 
   end
+
+  it "Search Markets by state, city, and/or name" do
+    create_list(:market, 4)
+    market = Market.create!(
+      {
+      "name": "Nob Hill Growers' Market",
+      "street": "Lead & Morningside SE",
+      "city": "Albuquerque",
+      "county": "Bernalillo",
+      "state": "New Mexico",
+      "zip": "",
+      "lat": "35.077529",
+      "lon": "-106.600449",
+      "vendor_count": 5
+      }
+    )
+
+    get "/api/v0/markets/search?city=Albuquerque&state=New%20Mexico&name=Nob%20Hill"
+    
+    market = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_successful
+    expect(response.status).to eq(200)
+    
+    expect(market[:data]).to be_an Array
+
+    attributes = market[:data].first[:attributes]
+    expect(attributes).to be_a Hash
+    
+    expect(attributes).to have_key(:name)
+    expect(attributes[:name]).to be_an(String)
+
+    expect(attributes).to have_key(:street)
+    expect(attributes[:street]).to be_an(String)
+
+    expect(attributes).to have_key(:city)
+    expect(attributes[:city]).to be_an(String)
+
+    expect(attributes).to have_key(:county)
+    expect(attributes[:county]).to be_an(String)
+
+    expect(attributes).to have_key(:state)
+    expect(attributes[:state]).to be_an(String)
+
+    expect(attributes).to have_key(:zip)
+    expect(attributes[:zip]).to be_an(String)
+
+    expect(attributes).to have_key(:lat)
+    expect(attributes[:lat]).to be_an(String)
+
+    expect(attributes).to have_key(:lon)
+    expect(attributes[:lon]).to be_an(String)
+
+    expect(attributes).to have_key(:vendor_count)
+    expect(attributes[:vendor_count]).to be_an(Integer)
+  end
 end
