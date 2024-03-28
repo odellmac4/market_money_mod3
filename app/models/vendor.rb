@@ -5,6 +5,7 @@ class Vendor < ApplicationRecord
   validates :description, presence: true
   validates :contact_name, presence: true
   validates :contact_phone, presence: true
+  # validates :credit_accepted, presence: true
   validate :validate_credit_accepted
 
   def validate_credit_accepted

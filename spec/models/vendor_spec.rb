@@ -25,17 +25,17 @@ describe Vendor do
     end 
 
     it 'raises error when credit_accepted is nil' do
-
-      expect{
-        Vendor.create!(
+      vendor = Vendor.new(
         {
           name: "Luff",
           description: "streetwear",
           contact_name: "E Hob",
           contact_phone: "6302720865",
-          credit_accepted: nil
+          credit_accepted: ""
         }
       )
+      expect{
+        vendor.save!
       }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
