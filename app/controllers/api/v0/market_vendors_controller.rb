@@ -2,7 +2,7 @@ class Api::V0::MarketVendorsController < ApplicationController
 
   def create
     if check_nil_values
-      not_found_response
+      no_market_or_vendor
       # This automatically raises 400
     else
       market = Market.find(params[:market_id])
@@ -45,15 +45,14 @@ class Api::V0::MarketVendorsController < ApplicationController
     end
   end
 
-  def not_found_response
+  def no_market_or_vendor
     render json: ErrorSerializer.new(ErrorMessage.new("Validation failed: Market or Vendor must exist", 400))
     .serializer_validation, status: :bad_request
   end
   # We need this method here to override the one from application_controller so we can filter the results, if you
   # think of a better way to refactor this, I'm up for ideas!
   def invalid_response(exception)
-    require 'pry'; binding.pry
-      render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 422))
-        .serializer_validation, status: :unprocessable_entity
+    render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 422))
+      .serializer_validation, status: :unprocessable_entity
   end
 end

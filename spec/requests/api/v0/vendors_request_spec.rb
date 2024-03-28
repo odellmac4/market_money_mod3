@@ -47,7 +47,6 @@ describe "Vendors API" do
     it "can destroy a Vendor from the database" do
       vendor = create(:vendor)
 
-      vendor = create(:vendor, credit_accepted: false)
       expect(Vendor.count).to eq(1)
 
       delete "/api/v0/vendors/#{vendor.id}"
