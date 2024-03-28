@@ -9,7 +9,7 @@ class Api::V0::MarketVendorsController < ApplicationController
     if market.vendors << vendor
     # This is another way to create MarketVendor, since we want to check for the RecordNotFound, this will also
     # raise the 422 error we want for a record that already exists
-        render json: MarketVendorSerializer.new(MarketVendor.find_by(market_vendor_params)).serialize_success, status: :created
+      render json: MarketVendorSerializer.new(MarketVendor.find_by(market_vendor_params)).serialize_success, status: :created
     end
   end
 

@@ -134,7 +134,7 @@ describe "Vendors API" do
                     credit_accepted: false
                   })
     headers = {"CONTENT_TYPE" => "application/json"}
-  
+
     post "/api/v0/vendors", headers: headers, params: vendor_params.to_json
 
     expect(response).to_not be_successful
@@ -144,5 +144,20 @@ describe "Vendors API" do
 
     expect(data[:errors]).to be_a Array
     expect(data[:errors].first[:detail]).to eq("Validation failed: Name can't be blank, Contact phone can't be blank")
+  end
+
+  describe "Get all Vendors for a Market" do
+    it "can get all Vendors for a Market" do
+      market = create(:market)
+      vendors = create_list(:vendor)
+
+      get "/api/v0/markets/#{market.id}/vendors"
+
+      expect(response).to be_successful
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      require 'pry'; binding.pry
+    end
   end
 end
