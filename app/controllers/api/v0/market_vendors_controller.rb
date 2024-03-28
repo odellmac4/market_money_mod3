@@ -10,13 +10,24 @@ class Api::V0::MarketVendorsController < ApplicationController
   end
 
   def destroy
-      market_vendor = MarketVendor.find(market_vendor_params)
-      market_vendor.destroy
+      if market_vendor
+        market_vendor.destroy
+      else
+        market_vendor_invalid
+      end
   end
 
   private
 
   def market_vendor_params
     params.require(:market_vendor).permit(:vendor_id, :market_id)
+  end
+
+  def market_vendor
+    market_vendor = MarketVendor.find_by(market_vendor_params)
+  end
+
+  def market_vendor_invalid
+    market_vendor = MarketVendor.find(market_vendor_params)
   end
 end

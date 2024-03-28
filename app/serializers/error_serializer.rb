@@ -15,7 +15,6 @@ class ErrorSerializer
   end
 
   def serializer_validation
-    # binding.pry
     {
       errors: [
           {
