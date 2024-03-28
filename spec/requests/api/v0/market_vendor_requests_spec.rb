@@ -72,7 +72,7 @@ describe "Market Vendors API" do
       data = JSON.parse(response.body, symbolize_names: true)
 
       expect(data[:errors]).to be_a(Array)
-      expect(data[:errors].first[:title]).to eq("Couldn't find Market with 'id'=1")
+      expect(data[:errors].first[:detail]).to eq("Couldn't find Market with 'id'=1")
     end
 
     it "has a 422 error" do

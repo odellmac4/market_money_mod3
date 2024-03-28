@@ -3,17 +3,6 @@ class ErrorSerializer
     @error_object = error_object
   end
 
-  def serialize_json
-    {
-      errors: [
-        {
-          status: @error_object.status_code.to_s,
-          title: @error_object.message
-        }
-      ]
-    }
-  end
-
   def serializer_validation
     {
       errors: [

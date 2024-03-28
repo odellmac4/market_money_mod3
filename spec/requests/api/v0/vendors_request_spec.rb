@@ -38,8 +38,7 @@ describe "Vendors API" do
       data = JSON.parse(response.body, symbolize_names: true)
 
       expect(data[:errors]).to be_a(Array)
-      expect(data[:errors].first[:status]).to eq("404")
-      expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=1")
+      expect(data[:errors].first[:detail]).to eq("Couldn't find Vendor with 'id'=1")
     end
   end
 
@@ -100,8 +99,7 @@ describe "Vendors API" do
       data = JSON.parse(response.body, symbolize_names: true)
 
       expect(data[:errors]).to be_a(Array)
-      expect(data[:errors].first[:status]).to eq("404")
-      expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=1")
+      expect(data[:errors].first[:detail]).to eq("Couldn't find Vendor with 'id'=1")
     end
   end
 
@@ -172,6 +170,16 @@ describe "Vendors API" do
         expect(vendor_data[:attributes][:contact_phone]).to be_a(String)
         expect(vendor_data[:attributes][:credit_accepted]).to eq(true)
       end
+    end
+
+    it "has a 404 error if an invalid market_id is passed" do
+      get "/api/v0/markets/1/vendors"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_an(Array)
     end
   end
 end
