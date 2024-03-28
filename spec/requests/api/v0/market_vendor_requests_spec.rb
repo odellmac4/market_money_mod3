@@ -23,6 +23,20 @@ describe "Market Vendors API" do
   end
 
   describe "sad paths" do
+    it "has a 400 error" do
+      body =    {
+        "vendor_id": @vendor.id
+      }
+
+      post "/api/v0/market_vendors", headers: @headers, params: JSON.generate(body)
+      expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors].first[:detail]).to eq("Validation failed: Market must exist, Market can't be blank")
+    end
+
     it "has a 404 error" do
       body =    {
         "market_id": 1,

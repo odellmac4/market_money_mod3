@@ -30,18 +30,6 @@ RSpec.describe MarketVendor do
       end
     end
 
-    # describe "valid_parameters" do
-    #   it "raises an error when parameters are not valid" do
-    #     market_vendor = MarketVendor.new(vendor_id: 1, market_id: @market.id)
-
-    #     expect { market_vendor.valid_parameters }.to raise_error(ActiveRecord::RecordNotFound, "Vendor must exist")
-
-    #     market_vendor = MarketVendor.new(vendor_id: @vendor.id, market_id: 1)
-
-    #     expect { market_vendor.valid_parameters }.to raise_error(ActiveRecord::RecordNotFound, "Market must exist")
-    #   end
-    # end
-
     describe "valid_market_vendor" do
       it "raises an error when a market_vendor already exists" do
         vendor = create(:vendor)
