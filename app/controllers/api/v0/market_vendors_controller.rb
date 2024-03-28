@@ -30,11 +30,11 @@ class Api::V0::MarketVendorsController < ApplicationController
   end
 
   def market_vendor
-    market_vendor = MarketVendor.find_by(market_vendor_params)
+    MarketVendor.find_by(market_vendor_params)
   end
 
   def market_vendor_invalid
-    market_vendor = MarketVendor.find(market_vendor_params)
+    MarketVendor.find(market_vendor_params)
   end
 
   def check_nil_values
@@ -49,8 +49,8 @@ class Api::V0::MarketVendorsController < ApplicationController
     render json: ErrorSerializer.new(ErrorMessage.new("Validation failed: Market or Vendor must exist", 400))
     .serializer_validation, status: :bad_request
   end
-  # We need this method here to override the one from application_controller so we can filter the results, if you
-  # think of a better way to refactor this, I'm up for ideas!
+
+  # We need this method here to override the one from application_controller
   def invalid_response(exception)
     render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 422))
       .serializer_validation, status: :unprocessable_entity
