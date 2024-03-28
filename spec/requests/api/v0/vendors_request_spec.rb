@@ -45,7 +45,7 @@ describe "Vendors API" do
 
   describe "delete a Vendor" do
     it "can destroy a Vendor from the database" do
-      vendor = create(:vendor)
+      vendor = create(:vendor, credit_accepted: false)
 
       expect(Vendor.count).to eq(1)
 
@@ -59,7 +59,7 @@ describe "Vendors API" do
 
       ### Alternate test to check for destroyed Vendor
 
-      vendor2 = create(:vendor)
+      vendor2 = create(:vendor, credit_accepted: true)
 
       expect{ delete "/api/v0/vendors/#{vendor2.id}" }.to change(Vendor, :count).by(-1)
       expect{Vendor.find(vendor2.id)}.to raise_error(ActiveRecord::RecordNotFound)
@@ -70,7 +70,7 @@ describe "Vendors API" do
       # Deleting MarketVendor, it will raise a foreign key restraint error, therefore associations need to be set up
       # So that when you destroy Vendor, you also destroy it's associated records
 
-      vendor = create(:vendor)
+      vendor = create(:vendor, credit_accepted: false)
       market = create(:market)
       market_vendor = MarketVendor.create!(market_id: market.id, vendor_id: vendor.id)
 
@@ -125,5 +125,24 @@ describe "Vendors API" do
     expect(created_vendor.contact_name).to eq(vendor_params[:contact_name])
     expect(created_vendor.contact_phone).to eq(vendor_params[:contact_phone])
     expect(created_vendor.credit_accepted).to eq(vendor_params[:credit_accepted])
+  end
+
+  it "will gracefully handle if a vendor can't be created" do
+    vendor_params = ({
+                    description: 'Urban Streetwear',
+                    contact_name: 'Erica Hobson',
+                    credit_accepted: false
+                  })
+    headers = {"CONTENT_TYPE" => "application/json"}
+  
+    post "/api/v0/vendors", headers: headers, params: vendor_params.to_json
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+
+    data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(data[:errors]).to be_a Array
+    expect(data[:errors].first[:detail]).to eq("Validation failed: Name can't be blank, Contact phone can't be blank")
   end
 end

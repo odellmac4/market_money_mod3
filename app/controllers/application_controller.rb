@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
-  rescue_from ActiveRecord::RecordNotUnique, with: :record_not_unique
+  rescue_from ActiveRecord::RecordInvalid, with: :invalid_response
 
   private
 
@@ -9,7 +9,8 @@ class ApplicationController < ActionController::API
     .serialize_json, status: :not_found
   end
 
-  def record_not_unique(exception)
-    render json: ErrorSerializer.new(ErrorMessage.new(exception, 422)).serializer_validation, status: :unprocessable_entity
+  def invalid_response(exception)
+    render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 400))
+    .serializer_validation, status: 400
   end
 end

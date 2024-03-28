@@ -6,11 +6,9 @@ class Api::V0::VendorsController < ApplicationController
 
   def create
     vendor = Vendor.new(vendor_params)
-    if vendor.save
+    if vendor.save!
       # These statuses are explicitly returning the status responses we want based on requirements
       render json: VendorSerializer.new(vendor), status: :created
-    else
-      render json: { errors: vendor.errors.full_messages }, status: :bad_request
     end
   end
 

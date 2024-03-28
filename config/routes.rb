@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :vendors, only: [:show, :destroy, :create]
       resources :vendors, only: [:show, :destroy]
       resources :market_vendors, only: [:create]
+      resources :vendors, only: [:show, :destroy, :create]
     end
   end
 end
