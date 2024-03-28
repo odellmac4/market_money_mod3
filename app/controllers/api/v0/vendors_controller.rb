@@ -10,7 +10,6 @@ class Api::V0::VendorsController < ApplicationController
       # These statuses are explicitly returning the status responses we want based on requirements
       render json: VendorSerializer.new(vendor), status: :created
     end
-
   end
 
   def destroy
@@ -22,9 +21,9 @@ class Api::V0::VendorsController < ApplicationController
 
   def vendor_params
     params.require(:vendor).permit(
-      :name, 
-      :description, 
-      :contact_name, 
+      :name,
+      :description,
+      :contact_name,
       :contact_phone,
       :credit_accepted
       )
