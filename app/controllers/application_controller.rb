@@ -5,6 +5,7 @@ class ApplicationController < ActionController::API
   private
 
   def not_found_response(exception)
+    require 'pry'; binding.pry
     render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404))
     .serialize_json, status: :not_found
   end
