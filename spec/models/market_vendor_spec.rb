@@ -21,13 +21,12 @@ RSpec.describe MarketVendor do
         market = create(:market)
         market_vendor = MarketVendor.new(vendor_id: 1, market_id: market.id)
 
-        expect { market_vendor.save! }.to raise_error(ActiveRecord::RecordInvalid)
-        expect(market_vendor.errors[:valid_ids].first).to eq("Vendor must exist")
+        expect { market_vendor.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Vendor must exist")
 
         market_vendor2 = MarketVendor.new(vendor_id: vendor.id, market_id: 1)
 
-        expect { market_vendor2.save! }.to raise_error(ActiveRecord::RecordInvalid)
-        expect(market_vendor2.errors[:valid_ids].first).to eq("Market must exist")
+        expect { market_vendor2.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Market must exist")
+
       end
     end
 
@@ -49,8 +48,7 @@ RSpec.describe MarketVendor do
         market = create(:market)
         MarketVendor.create(vendor_id: vendor.id, market_id: market.id)
         market_vendor2 = MarketVendor.new(vendor_id: vendor.id, market_id: market.id)
-
-        expect { market_vendor2.valid_market_vendor }.to raise_error(ActiveRecord::RecordNotUnique, "Market vendor association between market with market_id=#{market.id} and vendor_id=#{vendor.id} already exists")
+        expect { market_vendor2.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Market vendor association between market with market_id=#{market.id} and vendor_id=#{vendor.id} already exists")
       end
     end
   end
