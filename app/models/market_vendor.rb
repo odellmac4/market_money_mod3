@@ -1,6 +1,9 @@
 class MarketVendor < ApplicationRecord
   belongs_to :market
   belongs_to :vendor
+  validates :vendor_id, presence: true
+  validates :market_id, presence: true
+  validate :valid_parameters
 
   # def unique_row
   #   existing_record = MarketVendor.find(market_id: market_id, vendor_id: vendor_id)
@@ -9,7 +12,7 @@ class MarketVendor < ApplicationRecord
   #   end
   # end
 
-  def valid_parameters2
+  def valid_parameters
     unless Vendor.exists?(id: vendor_id)
       errors.add(:valid_ids, "Vendor must exist")
     end
@@ -19,16 +22,16 @@ class MarketVendor < ApplicationRecord
     end
   end
 
-  def valid_parameters
-    begin
-      Vendor.find(vendor_id)
-      Market.find(market_id)
-      true
-    rescue ActiveRecord::RecordNotFound => exception
-      object = exception.to_s.split[2]
-      raise exception, "#{object} must exist"
-    end
-  end
+  # def valid_parameters
+  #   begin
+  #     Vendor.find(vendor_id)
+  #     Market.find(market_id)
+  #     true
+  #   rescue ActiveRecord::RecordNotFound => exception
+  #     object = exception.to_s.split[2]
+  #     raise exception, "#{object} must exist"
+  #   end
+  # end
 
   def valid_market_vendor
     if MarketVendor.find_by(market_id: market_id, vendor_id: vendor_id)
@@ -36,14 +39,5 @@ class MarketVendor < ApplicationRecord
     else
       true
     end
-    # begin
-    #   Vendor.find(vendor_id)
-    #   Market.find(market_id)
-    #   true
-    # rescue ActiveRecord::RecordNotFound => exception
-    #   require 'pry'; binding.pry
-    #   object = exception.to_s.split[2]
-    #   raise exception, "Market vendor association between market with market_id=#{market_id} and vendor_id=#{vendor_id} already exists"
-    # end
   end
 end
