@@ -36,4 +36,16 @@ describe "nearest atm request" do
       expect(atm[:attributes][:distance]).to be_a(Float)
     end
   end
+
+  it "has a 404 error" do
+    get "/api/v0/markets/1/nearest_atms"
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
+
+    data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(data[:errors]).to be_a(Array)
+    expect(data[:errors].first[:detail]).to eq("Couldn't find Market with 'id'=1")
+  end
 end

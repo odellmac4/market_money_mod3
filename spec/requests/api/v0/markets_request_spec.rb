@@ -40,22 +40,22 @@ describe "Markets Api" do
 
   it "can get one market by its id" do
     id = create(:market).id
-  
+
     get "/api/v0/markets/#{id}"
-  
+
     market = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-    
+
     market_info = market[:data]
     expect(market_info).to be_a(Hash)
 
     expect(market_info).to have_key(:id)
     expect(market_info[:id]).to eq("#{id}")
-  
+
     expect(market_info).to have_key(:type)
     expect(market_info[:type]).to eq("market")
-  
+
     expect(market_info).to have_key(:attributes)
     expect(market_info[:attributes]).to be_a(Hash)
 
@@ -68,6 +68,5 @@ describe "Markets Api" do
     expect(market_info[:attributes][:lat]).to be_a(String)
     expect(market_info[:attributes][:lon]).to be_a(String)
     expect(market_info[:attributes][:vendor_count]).to be_an(Integer)
-
   end
 end
