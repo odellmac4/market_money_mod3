@@ -1,11 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe MarketVendor do
-  before do
-    @vendor = create(:vendor)
-    @market = create(:market)
-  end
-
   it {should belong_to(:market)}
   it {should belong_to(:vendor)}
 
