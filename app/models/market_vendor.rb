@@ -3,7 +3,7 @@ class MarketVendor < ApplicationRecord
   belongs_to :vendor
   validates :vendor_id, presence: true
   validates :market_id, presence: true
-  validate :valid_market_vendor
+  validate :valid_market_vendor, :valid_records
 
   # def unique_row
   #   existing_record = MarketVendor.find(market_id: market_id, vendor_id: vendor_id)
@@ -12,17 +12,15 @@ class MarketVendor < ApplicationRecord
   #   end
   # end
 
-  # def valid_parameters
-  #   unless Vendor.exists?(id: vendor_id)
-  #     errors.add(:vendor, "must exist")
+  # def valid_records
+  #   if Market.find(market_id) && Vendor.find(vendor_id)
+  #     true
   #   end
 
-  #   unless Market.exists?(id: market_id)
-  #     errors.add(:market, "must exist")
-  #   end
   # end
 
   # def valid_parameters
+  #   require 'pry'; binding.pry
   #   begin
   #     Vendor.find(vendor_id)
   #     Market.find(market_id)

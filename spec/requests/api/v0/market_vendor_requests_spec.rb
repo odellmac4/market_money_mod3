@@ -23,13 +23,14 @@ describe "Market Vendors API" do
   end
 
   describe "sad paths" do
-    it "has a 400 error" do
+    it "has a 400 error when vendor_id/market_id are not passed" do
       body =    {
         "vendor_id": @vendor.id
       }
 
       post "/api/v0/market_vendors", headers: @headers, params: JSON.generate(body)
-      expect(response.status).to eq(404)
+      expect(response.status).to eq(400)
+      expect(response.code).to eq("400")
 
       data = JSON.parse(response.body, symbolize_names: true)
 
@@ -37,7 +38,7 @@ describe "Market Vendors API" do
       expect(data[:errors].first[:detail]).to eq("Validation failed: Market must exist, Market can't be blank")
     end
 
-    it "has a 404 error" do
+    it "has a 404 error when invalid vendor_id/market_id are passed" do
       body =    {
         "market_id": 1,
         "vendor_id": @vendor.id
@@ -45,11 +46,12 @@ describe "Market Vendors API" do
 
       post "/api/v0/market_vendors", headers: @headers, params: JSON.generate(body)
       expect(response.status).to eq(404)
+      expect(response.code).to eq("404")
 
       data = JSON.parse(response.body, symbolize_names: true)
 
       expect(data[:errors]).to be_a(Array)
-      expect(data[:errors].first[:detail]).to eq("Validation failed: Market must exist")
+      expect(data[:errors].first[:title]).to eq("Couldn't find Market with 'id'=1")
     end
 
     it "has a 422 error" do
