@@ -45,6 +45,8 @@ describe "Vendors API" do
 
   describe "delete a Vendor" do
     it "can destroy a Vendor from the database" do
+      vendor = create(:vendor)
+
       vendor = create(:vendor, credit_accepted: false)
       expect(Vendor.count).to eq(1)
 
@@ -58,7 +60,7 @@ describe "Vendors API" do
 
       ### Alternate test to check for destroyed Vendor
 
-      vendor2 = create(:vendor, credit_accepted: true)
+      vendor2 = create(:vendor)
 
       expect{ delete "/api/v0/vendors/#{vendor2.id}" }.to change(Vendor, :count).by(-1)
       expect{Vendor.find(vendor2.id)}.to raise_error(ActiveRecord::RecordNotFound)
@@ -69,7 +71,7 @@ describe "Vendors API" do
       # Deleting MarketVendor, it will raise a foreign key restraint error, therefore associations need to be set up
       # So that when you destroy Vendor, you also destroy it's associated records
 
-      vendor = create(:vendor, credit_accepted: false)
+      vendor = create(:vendor)
       market = create(:market)
       market_vendor = MarketVendor.create!(market_id: market.id, vendor_id: vendor.id)
 
