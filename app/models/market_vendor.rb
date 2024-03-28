@@ -3,7 +3,7 @@ class MarketVendor < ApplicationRecord
   belongs_to :vendor
   validates :vendor_id, presence: true
   validates :market_id, presence: true
-  validate :valid_market_vendor, :valid_records
+  validate :valid_market_vendor
 
   # def unique_row
   #   existing_record = MarketVendor.find(market_id: market_id, vendor_id: vendor_id)
