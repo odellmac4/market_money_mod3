@@ -38,36 +38,49 @@ describe "Markets Api" do
     end
   end
 
-  it "can get one market by its id" do
-    id = create(:market).id
-  
-    get "/api/v0/markets/#{id}"
-  
-    market = JSON.parse(response.body, symbolize_names: true)
+  describe "End Point 2 - Get One Market" do
+    it "can get one market by its id" do
+      id = create(:market).id
 
-    expect(response).to be_successful
-    
-    market_info = market[:data]
-    expect(market_info).to be_a(Hash)
+      get "/api/v0/markets/#{id}"
 
-    expect(market_info).to have_key(:id)
-    expect(market_info[:id]).to eq("#{id}")
-  
-    expect(market_info).to have_key(:type)
-    expect(market_info[:type]).to eq("market")
-  
-    expect(market_info).to have_key(:attributes)
-    expect(market_info[:attributes]).to be_a(Hash)
+      market = JSON.parse(response.body, symbolize_names: true)
 
-    expect(market_info[:attributes][:name]).to be_a(String)
-    expect(market_info[:attributes][:street]).to be_a(String)
-    expect(market_info[:attributes][:city]).to be_a(String)
-    expect(market_info[:attributes][:county]).to be_a(String)
-    expect(market_info[:attributes][:state]).to be_a(String)
-    expect(market_info[:attributes][:zip]).to be_a(String)
-    expect(market_info[:attributes][:lat]).to be_a(String)
-    expect(market_info[:attributes][:lon]).to be_a(String)
-    expect(market_info[:attributes][:vendor_count]).to be_an(Integer)
+      expect(response).to be_successful
 
+      market_info = market[:data]
+      expect(market_info).to be_a(Hash)
+
+      expect(market_info).to have_key(:id)
+      expect(market_info[:id]).to eq("#{id}")
+
+      expect(market_info).to have_key(:type)
+      expect(market_info[:type]).to eq("market")
+
+      expect(market_info).to have_key(:attributes)
+      expect(market_info[:attributes]).to be_a(Hash)
+
+      expect(market_info[:attributes][:name]).to be_a(String)
+      expect(market_info[:attributes][:street]).to be_a(String)
+      expect(market_info[:attributes][:city]).to be_a(String)
+      expect(market_info[:attributes][:county]).to be_a(String)
+      expect(market_info[:attributes][:state]).to be_a(String)
+      expect(market_info[:attributes][:zip]).to be_a(String)
+      expect(market_info[:attributes][:lat]).to be_a(String)
+      expect(market_info[:attributes][:lon]).to be_a(String)
+      expect(market_info[:attributes][:vendor_count]).to be_an(Integer)
+    end
+
+    it "has a 404 sad path if id is invalid" do
+      get "/api/v0/markets/1"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_an(Array)
+      expect(data[:errors].first[:detail]).to eq("Couldn't find Market with 'id'=1")
+    end
   end
 end
