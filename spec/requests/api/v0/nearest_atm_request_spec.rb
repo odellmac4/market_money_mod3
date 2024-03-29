@@ -30,7 +30,7 @@ describe "nearest atm request" do
         expect(atm[:id]).to eq(nil)
         expect(atm[:type]).to eq("atm")
         expect(atm[:attributes]).to be_a(Hash)
-        expect(atm[:attributes].keys).to eq([:name, :address, :lat, :lon, :distance])
+        expect(atm[:attributes].keys).to eq([:name, :address, :lat, :lon, :distance, :id])
         expect(atm[:attributes][:name]).to be_a(String)
         expect(atm[:attributes][:address]).to be_a(String)
         expect(atm[:attributes][:lat]).to be_a(Float)

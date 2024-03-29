@@ -25,6 +25,7 @@ RSpec.describe Atm do
     it "has readable attributes" do
       atm = Atm.new(@data)
 
+      expect(atm.id).to eq(nil)
       expect(atm.name).to eq("Bank")
       expect(atm.address).to eq("14th Street Northwest, Washington, DC 20009")
       expect(atm.lat).to eq(38.916967)
