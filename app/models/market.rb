@@ -5,4 +5,6 @@ class Market < ApplicationRecord
   def vendor_count
     vendors.count
   end
+
+  
 end

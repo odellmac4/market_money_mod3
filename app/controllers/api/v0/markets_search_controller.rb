@@ -2,8 +2,7 @@ class Api::V0::MarketsSearchController < ApplicationController
   # rescue_from ActiveRecord::RecordInvalid, with: :invalid_params_response
 
   def index
-    markets = Market.all
-    if (city.present? && state.blank? && market_name.blank?) || (city.present? && market_name.present? && state.blank?) 
+    if city_name_present? 
       invalid_params_response
     else
       markets_search_requirements
@@ -11,6 +10,9 @@ class Api::V0::MarketsSearchController < ApplicationController
   end
 
   private
+  def city_name_present?
+    (city.present? && state.blank? && market_name.blank?) || (city.present? && market_name.present? && state.blank?)
+  end
 
   def markets_search_requirements
     markets = Market.all

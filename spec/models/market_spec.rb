@@ -18,4 +18,8 @@ RSpec.describe Market, type: :model do
     expect(market1.vendor_count).to eq 3
 
   end
+
+  describe 'class methods' do
+    it
+  end
 end
