@@ -25,7 +25,7 @@ class Api::V0::VendorsController < ApplicationController
 
   def destroy
     vendor = Vendor.find(params[:id])
-    vendor.destroy
+    render json: vendor.destroy, status: :no_content
   end
 
   private
