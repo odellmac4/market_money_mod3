@@ -227,5 +227,25 @@ describe "Vendors API" do
       expect(error.keys).to eq([:errors])
       expect(error[:errors].first[:detail]).to eq("Couldn't find Vendor with 'id'=1")
     end
+
+    it "has a 400 status when any attribute is nil" do
+      update_attributes = {
+        name: nil,
+        contact_name: "Person",
+        contact_phone: "911-123-4567",
+        credit_accepted: true,
+        description: "Good person"
+      }
+
+      patch "/api/v0/vendors/#{@vendor.id}", headers: @headers, params: JSON.generate(update_attributes)
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
+
+      error = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error.keys).to eq([:errors])
+      expect(error[:errors].first[:detail]).to eq("Validation failed: Name can't be blank")
+    end
   end
 end
