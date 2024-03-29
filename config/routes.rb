@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     namespace :v0 do
       resources :markets, only: [:index, :show] do
         resources :vendors, only: [:index]
+        resources :nearest_atms, only: [:index]
       end
       resources :vendors, only: [:show, :destroy, :create]
       resources :market_vendors, only: [:create]

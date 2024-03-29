@@ -1,0 +1,101 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.tomtom.com/search/2/categorySearch/atm.json?countrySet=US&key=DONT_SHARE_MY_TOM_TOM_KEY&language=en-US&lat=24.23&lon=-73.232&relatedPois=off&view=Unified
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Faraday v2.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 28 Mar 2024 23:17:45 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Tracking-Id:
+      - b31c36d9-aeb4-4d3e-96f6-566c64c32b51
+      Access-Control-Expose-Headers:
+      - Tracking-ID
+      Server:
+      - tomtom
+      X-Tomtom-Processed-By:
+      - westus2
+      X-Tomtom-Message-Id:
+      - 693fa6a0-30e2-4c82-afd8-74c2bcce5045
+      X-Tomtom-Upstream-Service-Time:
+      - '327'
+      X-Tomtom-Attempt-Count:
+      - '1'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"summary":{"query":"atm","queryType":"NON_NEAR","queryTime":312,"numResults":10,"offset":0,"totalResults":100,"fuzzyLevel":1,"geoBias":{"lat":24.23,"lon":-73.232}},"results":[{"type":"POI","id":"k-YGYb3DDj3zKUyVBAJhXg","score":2.1458230019,"dist":716029.039874,"info":"search:ta:840129008668061-US","poi":{"name":"Metabank","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1","streetName":"Ocean Drive","municipality":"Miami
+        Beach","countrySecondarySubdivision":"Miami-Dade","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33139","extendedPostalCode":"33139-7321","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1 Ocean Drive, Miami Beach,
+        FL 33139","localName":"Miami Beach"},"position":{"lat":25.769018,"lon":-80.132238},"viewport":{"topLeftPoint":{"lat":25.76992,"lon":-80.13324},"btmRightPoint":{"lat":25.76812,"lon":-80.13124}},"entryPoints":[{"type":"minor","position":{"lat":25.76936,"lon":-80.13309}},{"type":"main","position":{"lat":25.76919,"lon":-80.13313}},{"type":"main","position":{"lat":25.76922,"lon":-80.13312}}]},{"type":"POI","id":"preF91AZiEXKhwFPAL_pCg","score":2.1458230019,"dist":716044.917333,"info":"search:ta:840129007617735-US","poi":{"name":"Metabank","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"101","streetName":"Ocean Drive","municipality":"Miami
+        Beach","countrySecondarySubdivision":"Miami-Dade","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33139","extendedPostalCode":"33139-7212","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"101 Ocean Drive, Miami
+        Beach, FL 33139","localName":"Miami Beach"},"position":{"lat":25.769649,"lon":-80.132247},"viewport":{"topLeftPoint":{"lat":25.77055,"lon":-80.13325},"btmRightPoint":{"lat":25.76875,"lon":-80.13125}},"entryPoints":[{"type":"main","position":{"lat":25.76978,"lon":-80.13299}}]},{"type":"POI","id":"cpBY6xcvnnK4nOCihqKL4g","score":2.1458227634,"dist":716113.437082,"info":"search:ta:840129007739264-US","poi":{"name":"Lynk
+        Systems","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"3611","streetName":"Collins Avenue","municipality":"Miami
+        Beach","countrySecondarySubdivision":"Miami-Dade","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33140","extendedPostalCode":"33140-4000","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"3611 Collins Avenue, Miami
+        Beach, FL 33140","localName":"Miami Beach"},"position":{"lat":25.809813,"lon":-80.123028},"viewport":{"topLeftPoint":{"lat":25.81071,"lon":-80.12403},"btmRightPoint":{"lat":25.80891,"lon":-80.12203}},"entryPoints":[{"type":"main","position":{"lat":25.80996,"lon":-80.12348}}]},{"type":"POI","id":"9oeHRY1_xZcdTU7BPLdOog","score":2.1458227634,"dist":716103.940695,"info":"search:ta:840129007784686-US","poi":{"name":"Metabank","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"2901","streetName":"Collins Avenue","municipality":"Miami
+        Beach","countrySecondarySubdivision":"Miami-Dade","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33140","extendedPostalCode":"33140-4104","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"2901 Collins Avenue, Miami
+        Beach, FL 33140","localName":"Miami Beach"},"position":{"lat":25.80512,"lon":-80.124105},"viewport":{"topLeftPoint":{"lat":25.80602,"lon":-80.1251},"btmRightPoint":{"lat":25.80422,"lon":-80.12311}},"entryPoints":[{"type":"main","position":{"lat":25.80535,"lon":-80.12479}}]},{"type":"POI","id":"YybzaFh7u1ORnNl40Bv3gA","score":2.1458227634,"dist":716143.354782,"info":"search:ta:840129007563337-US","poi":{"name":"Metabank","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"4101","streetName":"Collins Avenue","municipality":"Miami
+        Beach","countrySecondarySubdivision":"Miami-Dade","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33140","extendedPostalCode":"33140-3208","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"4101 Collins Avenue, Miami
+        Beach, FL 33140","localName":"Miami Beach"},"position":{"lat":25.813281,"lon":-80.122463},"viewport":{"topLeftPoint":{"lat":25.81418,"lon":-80.12346},"btmRightPoint":{"lat":25.81238,"lon":-80.12146}},"entryPoints":[{"type":"main","position":{"lat":25.81333,"lon":-80.12297}},{"type":"minor","position":{"lat":25.81342,"lon":-80.12296}}]},{"type":"POI","id":"ayKI4AdEvVdGzHSXFhUKJA","score":2.1458227634,"dist":716111.486644,"info":"search:ta:840129007496776-US","poi":{"name":"Lynk
+        Systems","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"3801","streetName":"Collins Avenue","municipality":"Miami
+        Beach","countrySecondarySubdivision":"Miami-Dade","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33140","extendedPostalCode":"33140-3705","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"3801 Collins Avenue, Miami
+        Beach, FL 33140","localName":"Miami Beach"},"position":{"lat":25.811333,"lon":-80.122626},"viewport":{"topLeftPoint":{"lat":25.81223,"lon":-80.12362},"btmRightPoint":{"lat":25.81043,"lon":-80.12163}},"entryPoints":[{"type":"main","position":{"lat":25.81141,"lon":-80.12326}}]},{"type":"POI","id":"44tVbwzQa9uReP3ydLhpNQ","score":2.1458227634,"dist":716105.066807,"info":"search:ta:840129006500097-US","poi":{"name":"ATM","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"3737","streetName":"Collins Avenue","municipality":"Miami
+        Beach","countrySecondarySubdivision":"Miami-Dade","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33140","extendedPostalCode":"33140-4011","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"3737 Collins Avenue, Miami
+        Beach, FL 33140","localName":"Miami Beach"},"position":{"lat":25.810653,"lon":-80.122731},"viewport":{"topLeftPoint":{"lat":25.81155,"lon":-80.12373},"btmRightPoint":{"lat":25.80975,"lon":-80.12173}},"entryPoints":[{"type":"main","position":{"lat":25.81073,"lon":-80.12336}}]},{"type":"POI","id":"jLKRog4YBRjq3KVZgma04g","score":2.1458227634,"dist":716137.571852,"info":"search:ta:840129007411557-US","poi":{"name":"Metabank","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"124","streetName":"2nd Street","municipality":"Miami
+        Beach","countrySecondarySubdivision":"Miami-Dade","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33139","extendedPostalCode":"33139-7105","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"124 2nd Street, Miami Beach,
+        FL 33139","localName":"Miami Beach"},"position":{"lat":25.770738,"lon":-80.132929},"viewport":{"topLeftPoint":{"lat":25.77164,"lon":-80.13393},"btmRightPoint":{"lat":25.76984,"lon":-80.13193}},"entryPoints":[{"type":"main","position":{"lat":25.77083,"lon":-80.1329}}]},{"type":"POI","id":"Hcg4uaBMwymFIhl6eIDe6g","score":2.1458227634,"dist":716132.324781,"info":"search:ta:840129009054429-US","poi":{"name":"Lynk
+        Systems","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"1455","streetName":"Ocean Drive","municipality":"Miami
+        Beach","countrySecondarySubdivision":"Miami-Dade","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33139","extendedPostalCode":"33139-4105","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"1455 Ocean Drive, Miami
+        Beach, FL 33139","localName":"Miami Beach"},"position":{"lat":25.787201,"lon":-80.128843},"viewport":{"topLeftPoint":{"lat":25.7881,"lon":-80.12984},"btmRightPoint":{"lat":25.7863,"lon":-80.12784}},"entryPoints":[{"type":"main","position":{"lat":25.78718,"lon":-80.12956}}]},{"type":"POI","id":"zJUhVMfYfy1XnPsnNgjLQQ","score":2.1458227634,"dist":716152.794457,"info":"search:ta:840129007454493-US","poi":{"name":"Metabank","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"4299","streetName":"Collins Avenue","municipality":"Miami
+        Beach","countrySecondarySubdivision":"Miami-Dade","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33140","extendedPostalCode":"33140-2650","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"4299 Collins Avenue, Miami
+        Beach, FL 33140","localName":"Miami Beach"},"position":{"lat":25.814226,"lon":-80.122322},"viewport":{"topLeftPoint":{"lat":25.81513,"lon":-80.12332},"btmRightPoint":{"lat":25.81333,"lon":-80.12132}},"entryPoints":[{"type":"main","position":{"lat":25.8143,"lon":-80.12282}}]}]}'
+  recorded_at: Thu, 28 Mar 2024 23:17:45 GMT
+recorded_with: VCR 6.2.0

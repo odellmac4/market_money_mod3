@@ -1,0 +1,102 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.tomtom.com/search/2/categorySearch/atm.json?countrySet=US&key=DONT_SHARE_MY_TOM_TOM_KEY&language=en-US&lat=24.23423&lon=-83.343&relatedPois=off&view=Unified
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Faraday v2.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 28 Mar 2024 23:19:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Tracking-Id:
+      - 8a6fbed1-bdc8-4f7a-bd79-cdfbadf76e3b
+      Access-Control-Expose-Headers:
+      - Tracking-ID
+      Server:
+      - tomtom
+      X-Tomtom-Processed-By:
+      - westus2
+      X-Tomtom-Message-Id:
+      - 805c61f8-8352-4183-a17a-43861071c84e
+      X-Tomtom-Upstream-Service-Time:
+      - '520'
+      X-Tomtom-Attempt-Count:
+      - '1'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"summary":{"query":"atm","queryType":"NON_NEAR","queryTime":503,"numResults":10,"offset":0,"totalResults":100,"fuzzyLevel":1,"geoBias":{"lat":24.23423,"lon":-83.343}},"results":[{"type":"POI","id":"sGr7QBHHJT8IOeiuYMuh3w","score":2.1604332924,"dist":159553.734887,"info":"search:ta:840129003909988-US","poi":{"name":"ATM
+        at Westin Kw","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"245","streetName":"Front Street","municipality":"Key
+        West","countrySecondarySubdivision":"Monroe","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33040","extendedPostalCode":"33040-8313","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"245 Front Street, Key West,
+        FL 33040","localName":"Key West"},"position":{"lat":24.558497,"lon":-81.808165},"viewport":{"topLeftPoint":{"lat":24.55988,"lon":-81.80969},"btmRightPoint":{"lat":24.55711,"lon":-81.80664}},"entryPoints":[{"type":"main","position":{"lat":24.55853,"lon":-81.80664}}]},{"type":"POI","id":"lrRgmHeLgZxfoSxcfUh2YQ","score":2.1604244709,"dist":159645.728741,"info":"search:ta:840129007721897-US","poi":{"name":"Pueblo
+        Bank And Trust Company","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"201","streetName":"Front Street","municipality":"Key
+        West","countrySecondarySubdivision":"Monroe","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33040","extendedPostalCode":"33040-8346","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"201 Front Street, Key West,
+        FL 33040","localName":"Key West"},"position":{"lat":24.556983,"lon":-81.806857},"viewport":{"topLeftPoint":{"lat":24.55788,"lon":-81.80785},"btmRightPoint":{"lat":24.55608,"lon":-81.80587}},"entryPoints":[{"type":"main","position":{"lat":24.55676,"lon":-81.80659}}]},{"type":"POI","id":"bFzx460Icdk805x8SfjucQ","score":2.1604218483,"dist":159671.440407,"info":"search:ta:840129007591945-US","poi":{"name":"Pueblo
+        Bank And Trust Company","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"401","streetName":"Wall Street","municipality":"Key
+        West","countrySecondarySubdivision":"Monroe","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33040","extendedPostalCode":"33040-6696","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"401 Wall Street, Key West,
+        FL 33040","localName":"Key West"},"position":{"lat":24.558934,"lon":-81.807081},"viewport":{"topLeftPoint":{"lat":24.55983,"lon":-81.80807},"btmRightPoint":{"lat":24.55803,"lon":-81.80609}},"entryPoints":[{"type":"main","position":{"lat":24.55909,"lon":-81.80703}}]},{"type":"POI","id":"zl83N6d46X8TUClTxA2Ipg","score":2.1604218483,"dist":159671.0725,"info":"search:ta:840129008685533-US","poi":{"name":"Pueblo
+        Bank And Trust Company","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"291","streetName":"Front Street","municipality":"Key
+        West","countrySecondarySubdivision":"Monroe","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33040","extendedPostalCode":"33040-8313","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"291 Front Street, Key West,
+        FL 33040","localName":"Key West"},"position":{"lat":24.558346,"lon":-81.806938},"viewport":{"topLeftPoint":{"lat":24.55925,"lon":-81.80793},"btmRightPoint":{"lat":24.55745,"lon":-81.80595}},"entryPoints":[{"type":"main","position":{"lat":24.55835,"lon":-81.80664}}]},{"type":"POI","id":"r6PDZA0iaRPZ8q3z8vhOWg","score":2.1604216099,"dist":159672.696373,"info":"search:ta:840129007673207-US","poi":{"name":"ATM","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"261","streetName":"Front Street","municipality":"Key
+        West","countrySecondarySubdivision":"Monroe","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33040","extendedPostalCode":"33040-8313","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"261 Front Street, Key West,
+        FL 33040","localName":"Key West"},"position":{"lat":24.557828,"lon":-81.806793},"viewport":{"topLeftPoint":{"lat":24.55873,"lon":-81.80778},"btmRightPoint":{"lat":24.55693,"lon":-81.8058}},"entryPoints":[{"type":"main","position":{"lat":24.5584,"lon":-81.80664}}]},{"type":"POI","id":"-sxbYuIa7aUpyzUNXlwm5g","score":2.1604208946,"dist":159680.122593,"info":"search:ta:840129003917764-US","poi":{"name":"ATM
+        at Key West Chamber of Commerce","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"402","streetName":"Wall Street","municipality":"Key
+        West","countrySecondarySubdivision":"Monroe","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33040","extendedPostalCode":"33040-6696","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"402 Wall Street, Key West,
+        FL 33040","localName":"Key West"},"position":{"lat":24.559326,"lon":-81.80709},"viewport":{"topLeftPoint":{"lat":24.56023,"lon":-81.80808},"btmRightPoint":{"lat":24.55843,"lon":-81.8061}},"entryPoints":[{"type":"main","position":{"lat":24.55934,"lon":-81.80692}},{"type":"main","position":{"lat":24.55928,"lon":-81.80695}}]},{"type":"POI","id":"Be8459O56ZRlCFd4XbfNeA","score":2.1604189873,"dist":159699.71691,"info":"search:ta:840129008992033-US","poi":{"name":"Pueblo
+        Bank And Trust Company","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"235","streetName":"Front Street","municipality":"Key
+        West","countrySecondarySubdivision":"Monroe","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33040","extendedPostalCode":"33040-8304","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"235 Front Street, Key West,
+        FL 33040","localName":"Key West"},"position":{"lat":24.557869,"lon":-81.806529},"viewport":{"topLeftPoint":{"lat":24.55877,"lon":-81.80752},"btmRightPoint":{"lat":24.55697,"lon":-81.80554}},"entryPoints":[{"type":"main","position":{"lat":24.55789,"lon":-81.80663}}]},{"type":"POI","id":"cxZtTpjkrJ44NfxZXaBS5g","score":2.1604161263,"dist":159728.943553,"info":"search:ta:840129007401845-US","poi":{"name":"Prosperity
+        Bank","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"300","streetName":"Front Street","municipality":"Key
+        West","countrySecondarySubdivision":"Monroe","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33040","extendedPostalCode":"33040-8304","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"300 Front Street, Key West,
+        FL 33040","localName":"Key West"},"position":{"lat":24.558727,"lon":-81.806446},"viewport":{"topLeftPoint":{"lat":24.55963,"lon":-81.80743},"btmRightPoint":{"lat":24.55783,"lon":-81.80546}},"entryPoints":[{"type":"main","position":{"lat":24.55878,"lon":-81.80665}},{"type":"main","position":{"lat":24.55874,"lon":-81.80665}}]},{"type":"POI","id":"h-ImGF3rsUQzPfsRV2fuuA","score":2.1604158878,"dist":159731.282186,"info":"search:ta:840129007582503-US","poi":{"name":"Metabank","categorySet":[{"id":7397}],"categories":["cash
+        dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"407","streetName":"Front Street","municipality":"Key
+        West","countrySecondarySubdivision":"Monroe","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33040","extendedPostalCode":"33040-6616","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"407 Front Street, Key West,
+        FL 33040","localName":"Key West"},"position":{"lat":24.559528,"lon":-81.806622},"viewport":{"topLeftPoint":{"lat":24.56043,"lon":-81.80761},"btmRightPoint":{"lat":24.55863,"lon":-81.80563}},"entryPoints":[{"type":"main","position":{"lat":24.55939,"lon":-81.80644}}]},{"type":"POI","id":"NOJPmFYj1zKAKkfP7JGDOQ","score":2.1604149342,"dist":159739.412317,"info":"search:ta:840129006320264-US","poi":{"name":"ATM
+        at System One","categorySet":[{"id":7397}],"categories":["cash dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
+        dispenser"}]}]},"address":{"streetNumber":"105","streetName":"Whitehead Street","municipality":"Key
+        West","countrySecondarySubdivision":"Monroe","countrySubdivision":"FL","countrySubdivisionName":"Florida","countrySubdivisionCode":"FL","postalCode":"33040","extendedPostalCode":"33040-6520","countryCode":"US","country":"United
+        States","countryCodeISO3":"USA","freeformAddress":"105 Whitehead Street, Key
+        West, FL 33040","localName":"Key West"},"position":{"lat":24.558639,"lon":-81.806318},"viewport":{"topLeftPoint":{"lat":24.55954,"lon":-81.80731},"btmRightPoint":{"lat":24.55774,"lon":-81.80533}},"entryPoints":[{"type":"main","position":{"lat":24.5586,"lon":-81.80648}}]}]}'
+  recorded_at: Thu, 28 Mar 2024 23:19:10 GMT
+recorded_with: VCR 6.2.0

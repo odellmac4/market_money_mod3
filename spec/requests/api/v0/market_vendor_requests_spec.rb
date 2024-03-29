@@ -7,42 +7,22 @@ describe "Market Vendors API" do
     @market = create(:market)
   end
 
-  it "can create one market_vendor" do
-    post "/api/v0/market_vendors", headers: @headers, params: JSON.generate(market_id: @market.id, vendor_id: @vendor.id)
+  describe "End Point 8 - Create a Market Vendor" do
+    it "can create one market_vendor" do
+      post "/api/v0/market_vendors", headers: @headers, params: JSON.generate(market_id: @market.id, vendor_id: @vendor.id)
 
-    expect(response).to be_successful
-    expect(response.status).to eq(201)
+      expect(response).to be_successful
+      expect(response.status).to eq(201)
 
-    data = JSON.parse(response.body, symbolize_names: true)
+      data = JSON.parse(response.body, symbolize_names: true)
 
-    expect(data[:message]).to eq("Successfully added vendor to market")
+      expect(data[:message]).to eq("Successfully added vendor to market")
 
-    market_vendor = MarketVendor.last
-    expect(market_vendor.vendor_id).to eq(@vendor.id)
-    expect(market_vendor.market_id).to eq(@market.id)
-  end
+      market_vendor = MarketVendor.last
+      expect(market_vendor.vendor_id).to eq(@vendor.id)
+      expect(market_vendor.market_id).to eq(@market.id)
+    end
 
-  it "can destroy a MarketVendor" do
-    market_vendor = MarketVendor.create!(market_id: @market.id, vendor_id: @vendor.id)
-
-    expect(MarketVendor.count).to eq(1)
-
-    body = {
-    "market_id": @market.id,
-    "vendor_id": @vendor.id
-    }
-
-    delete "/api/v0/market_vendors", headers: @headers, params: JSON.generate(body)
-
-    expect(response).to be_successful
-    expect(response.code).to eq("204")
-    expect(response).to have_http_status(:no_content)
-    expect(MarketVendor.count).to eq(0)
-    expect{MarketVendor.find(market_vendor.id)}.to raise_error(ActiveRecord::RecordNotFound)
-    expect(@market.vendors).to eq([])
-  end
-
-  describe "sad paths" do
     it "has a 400 error when vendor_id/market_id are not passed" do
       body =    {
         "vendor_id": @vendor.id
@@ -90,9 +70,31 @@ describe "Market Vendors API" do
       expect(data[:errors]).to be_a(Array)
       expect(data[:errors].first[:detail]).to eq("Validation failed: Market vendor association between market with market_id=#{@market.id} and vendor_id=#{@vendor.id} already exists")
     end
+  end
+
+  describe "End Point 9 - Destroy a MarketVendor" do
+    it "can destroy a MarketVendor" do
+      market_vendor = MarketVendor.create!(market_id: @market.id, vendor_id: @vendor.id)
+
+      expect(MarketVendor.count).to eq(1)
+
+      body = {
+      "market_id": @market.id,
+      "vendor_id": @vendor.id
+      }
+
+      delete "/api/v0/market_vendors", headers: @headers, params: JSON.generate(body)
+
+      expect(response).to be_successful
+      expect(response.code).to eq("204")
+      expect(response).to have_http_status(:no_content)
+      expect(MarketVendor.count).to eq(0)
+      expect{MarketVendor.find(market_vendor.id)}.to raise_error(ActiveRecord::RecordNotFound)
+      expect(@market.vendors).to eq([])
+    end
 
     it "has a 404 error when market_id and vendor_id is invalid" do
-      market_vendor = MarketVendor.create!(market_id: @market.id, vendor_id: @vendor.id)
+      MarketVendor.create!(market_id: @market.id, vendor_id: @vendor.id)
 
       body = {
       "market_id": 1,

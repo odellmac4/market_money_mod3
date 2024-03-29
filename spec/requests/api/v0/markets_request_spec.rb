@@ -46,29 +46,29 @@ describe "Markets Api" do
 
       market = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response).to be_successful
+    expect(response).to be_successful
 
-      market_info = market[:data]
-      expect(market_info).to be_a(Hash)
+    market_info = market[:data]
+    expect(market_info).to be_a(Hash)
 
-      expect(market_info).to have_key(:id)
-      expect(market_info[:id]).to eq("#{id}")
+    expect(market_info).to have_key(:id)
+    expect(market_info[:id]).to eq("#{id}")
 
-      expect(market_info).to have_key(:type)
-      expect(market_info[:type]).to eq("market")
+    expect(market_info).to have_key(:type)
+    expect(market_info[:type]).to eq("market")
 
-      expect(market_info).to have_key(:attributes)
-      expect(market_info[:attributes]).to be_a(Hash)
+    expect(market_info).to have_key(:attributes)
+    expect(market_info[:attributes]).to be_a(Hash)
 
-      expect(market_info[:attributes][:name]).to be_a(String)
-      expect(market_info[:attributes][:street]).to be_a(String)
-      expect(market_info[:attributes][:city]).to be_a(String)
-      expect(market_info[:attributes][:county]).to be_a(String)
-      expect(market_info[:attributes][:state]).to be_a(String)
-      expect(market_info[:attributes][:zip]).to be_a(String)
-      expect(market_info[:attributes][:lat]).to be_a(String)
-      expect(market_info[:attributes][:lon]).to be_a(String)
-      expect(market_info[:attributes][:vendor_count]).to be_an(Integer)
+    expect(market_info[:attributes][:name]).to be_a(String)
+    expect(market_info[:attributes][:street]).to be_a(String)
+    expect(market_info[:attributes][:city]).to be_a(String)
+    expect(market_info[:attributes][:county]).to be_a(String)
+    expect(market_info[:attributes][:state]).to be_a(String)
+    expect(market_info[:attributes][:zip]).to be_a(String)
+    expect(market_info[:attributes][:lat]).to be_a(String)
+    expect(market_info[:attributes][:lon]).to be_a(String)
+    expect(market_info[:attributes][:vendor_count]).to be_an(Integer)
     end
 
     it "has a 404 sad path if id is invalid" do
