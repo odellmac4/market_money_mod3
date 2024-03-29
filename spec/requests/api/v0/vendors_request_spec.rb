@@ -208,7 +208,7 @@ describe "Vendors API" do
       expect(data).to be_a(Hash)
       expect(data.keys).to eq([:data])
       expect(data[:data].keys).to eq([:id, :type, :attributes])
-      expect(data[:data][:attributes.keys]).to eq([:name, :description, :contact_name, :contact_phone, :credit_accepted])
+      expect(data[:data][:attributes].keys).to eq([:name, :description, :contact_name, :contact_phone, :credit_accepted])
       expect(data[:data][:attributes][:name]).to eq("Henry")
       expect(data[:data][:attributes][:contact_phone]).to eq("911-123-4567")
 
@@ -217,7 +217,15 @@ describe "Vendors API" do
     end
 
     it "has a 404 status when an ID is passed that doesn't exist" do
+      patch "/api/v0/vendors/1", headers: @headers, params: JSON.generate(@update_attributes)
 
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      error = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error.keys).to eq([:errors])
+      expect(error[:errors].first[:detail]).to eq("Couldn't find Vendor with 'id'=1")
     end
   end
 end
