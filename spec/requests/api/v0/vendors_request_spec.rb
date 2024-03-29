@@ -183,4 +183,41 @@ describe "Vendors API" do
       expect(data[:errors].first[:detail]).to eq("Couldn't find Market with 'id'=1")
     end
   end
+
+  describe "End Point 6 - Update a Vendor" do
+    before do
+      @vendor = create(:vendor)
+      @previous_name = @vendor.name
+      @previous_phone = @vendor.contact_phone
+
+      @headers = {"CONTENT_TYPE" => "application/json"}
+      @update_attributes = {
+        name: "Henry",
+        contact_phone: "911-123-4567"
+      }
+    end
+
+    it "can update a Vendor" do
+      patch "/api/v0/vendors/#{@vendor.id}", headers: @headers, params: JSON.generate(@update_attributes)
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data).to be_a(Hash)
+      expect(data.keys).to eq([:data])
+      expect(data[:data].keys).to eq([:id, :type, :attributes])
+      expect(data[:data][:attributes.keys]).to eq([:name, :description, :contact_name, :contact_phone, :credit_accepted])
+      expect(data[:data][:attributes][:name]).to eq("Henry")
+      expect(data[:data][:attributes][:contact_phone]).to eq("911-123-4567")
+
+      expect(@previous_name).to_not eq(data[:data][:attributes][:name])
+      expect(@previous_phone).to_not eq(data[:data][:attributes][:contact_phone])
+    end
+
+    it "has a 404 status when an ID is passed that doesn't exist" do
+
+    end
+  end
 end

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         resources :vendors, only: [:index]
         resources :nearest_atms, only: [:index]
       end
-      resources :vendors, only: [:show, :destroy, :create]
+      resources :vendors, only: [:show, :destroy, :create, :update]
       resources :market_vendors, only: [:create]
       delete "/market_vendors", to: "market_vendors#destroy"
     end
