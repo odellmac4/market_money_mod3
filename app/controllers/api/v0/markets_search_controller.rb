@@ -2,7 +2,6 @@ class Api::V0::MarketsSearchController < ApplicationController
   # rescue_from ActiveRecord::RecordInvalid, with: :invalid_params_response
 
   def index
-    # binding.pry
     markets = Market.all
     if (city.present? && state.blank? && market_name.blank?) || (city.present? && market_name.present? && state.blank?) 
       invalid_params_response
