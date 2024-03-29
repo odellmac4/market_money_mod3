@@ -38,12 +38,13 @@ describe "Markets Api" do
     end
   end
 
-  it "can get one market by its id" do
-    id = create(:market).id
+  describe "End Point 2 - Get One Market" do
+    it "can get one market by its id" do
+      id = create(:market).id
 
-    get "/api/v0/markets/#{id}"
+      get "/api/v0/markets/#{id}"
 
-    market = JSON.parse(response.body, symbolize_names: true)
+      market = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
 
@@ -68,5 +69,18 @@ describe "Markets Api" do
     expect(market_info[:attributes][:lat]).to be_a(String)
     expect(market_info[:attributes][:lon]).to be_a(String)
     expect(market_info[:attributes][:vendor_count]).to be_an(Integer)
+    end
+
+    it "has a 404 sad path if id is invalid" do
+      get "/api/v0/markets/1"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_an(Array)
+      expect(data[:errors].first[:detail]).to eq("Couldn't find Market with 'id'=1")
+    end
   end
 end
