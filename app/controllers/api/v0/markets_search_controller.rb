@@ -1,5 +1,4 @@
 class Api::V0::MarketsSearchController < ApplicationController
-  # rescue_from ActiveRecord::RecordInvalid, with: :invalid_params_response
 
   def index
     if city_name_present? 
@@ -10,6 +9,7 @@ class Api::V0::MarketsSearchController < ApplicationController
   end
 
   private
+
   def city_name_present?
     (city.present? && state.blank? && market_name.blank?) || (city.present? && market_name.present? && state.blank?)
   end
@@ -17,16 +17,23 @@ class Api::V0::MarketsSearchController < ApplicationController
   def markets_search_requirements
     markets = Market.all
     if markets_search_params.present?
-      markets = markets.where("name LIKE ? AND state LIKE ? AND city LIKE ?", "%#{market_name}%", "%#{state}%", "%#{city}%")
+      markets = markets.match_name_city_state(market_name, city, state)
 
-    elsif (state.present? || market_name.present?) || (state.present? && market_name.present?)
-      markets = markets.where("name LIKE ? AND state LIKE ?", "%#{market_name}%", "%#{state}%")
+    elsif state_and_or_name_present?
+      markets = markets.match_state_name(market_name, state)
 
-    elsif state.present? && city.present?
-      markets = markets.where("state LIKE ? AND city LIKE ?", "%#{state}%", "%#{city}%")
+    elsif state_and_city_present?
+      markets = markets.match_state_city(state, city)
     end
-    markets
     render json: MarketSerializer.new(markets)
+  end
+
+  def state_and_or_name_present?
+    (state.present? || market_name.present?) || (state.present? && market_name.present?)
+  end
+
+  def state_and_city_present?
+    state.present? && city.present?
   end
 
   def markets_search_params
