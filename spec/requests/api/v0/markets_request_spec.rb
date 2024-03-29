@@ -83,4 +83,135 @@ describe "Markets Api" do
       expect(data[:errors].first[:detail]).to eq("Couldn't find Market with 'id'=1")
     end
   end
+
+  describe "End Point 11 - Markets Search" do
+    it "Search Markets by state, city, and/or name" do
+      create_list(:market, 4)
+      market = Market.create!(
+        {
+        "name": "Nob Hill Growers' Market",
+        "street": "Lead & Morningside SE",
+        "city": "Albuquerque",
+        "county": "Bernalillo",
+        "state": "New Mexico",
+        "zip": "",
+        "lat": "35.077529",
+        "lon": "-106.600449",
+        "vendor_count": 5
+        }
+      )
+
+      get "/api/v0/markets/search?city=Albuquerque&state=New%20Mexico&name=Nob%20Hill"
+      market = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      expect(market[:data]).to be_an Array
+
+      attributes = market[:data].first[:attributes]
+      expect(attributes).to be_a Hash
+
+      expect(attributes).to have_key(:name)
+      expect(attributes[:name]).to be_an(String)
+
+      expect(attributes).to have_key(:street)
+      expect(attributes[:street]).to be_an(String)
+
+      expect(attributes).to have_key(:city)
+      expect(attributes[:city]).to be_an(String)
+
+      expect(attributes).to have_key(:county)
+      expect(attributes[:county]).to be_an(String)
+
+      expect(attributes).to have_key(:state)
+      expect(attributes[:state]).to be_an(String)
+
+      expect(attributes).to have_key(:zip)
+      expect(attributes[:zip]).to be_an(String)
+
+      expect(attributes).to have_key(:lat)
+      expect(attributes[:lat]).to be_an(String)
+
+      expect(attributes).to have_key(:lon)
+      expect(attributes[:lon]).to be_an(String)
+
+      expect(attributes).to have_key(:vendor_count)
+      expect(attributes[:vendor_count]).to be_an(Integer)
+    end
+
+    it "has a 200 even when no results are returned" do
+      get "/api/v0/markets/search?city=GasSaway&state=West%20Virginia&name=County"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      markets = JSON.parse(response.body, symbolize_names: true)
+
+      expect(markets).to be_a(Hash)
+      expect(markets.keys).to eq([:data])
+      expect(markets[:data]).to eq([])
+    end
+
+    it "has a 200 with just state" do
+      get "/api/v0/markets/search?state=West%20Virginia"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+    end
+
+    it "has a 200 with just state and city" do
+      get "/api/v0/markets/search?state=West%20Virginia&city=GasSaway"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+    end
+
+    it "has a 200 with just state and name" do
+      get "/api/v0/markets/search?state=West%20Virginia&name=GasSaway"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+    end
+
+    it "has a 200 with just name" do
+      get "/api/v0/markets/search?name=GasSaway"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+    end
+
+    it "has a 422 with city and name" do
+      get "/api/v0/markets/search?name=GasSaway&city=Cat"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(422)
+    end
+
+    it "has a 422 error when invalid set of parameters are sent in" do
+      create_list(:market, 4)
+      market = Market.create!(
+        {
+        "name": "Nob Hill Growers' Market",
+        "street": "Lead & Morningside SE",
+        "city": "Albuquerque",
+        "county": "Bernalillo",
+        "state": "New Mexico",
+        "zip": "",
+        "lat": "35.077529",
+        "lon": "-106.600449",
+        "vendor_count": 5
+        }
+      )
+
+      get "/api/v0/markets/search?city=albuquerque"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(422)
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_an(Array)
+      expect(data[:errors].first[:detail]).to eq("Invalid set of parameters. Please provide a valid set of parameters to perform a search with this endpoint.")
+    end
+  end
 end
