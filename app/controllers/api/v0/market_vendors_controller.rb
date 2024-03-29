@@ -10,7 +10,7 @@ class Api::V0::MarketVendorsController < ApplicationController
 
   def destroy
     if market_vendor
-      render json: market_vendor.destroy, status: :no_content
+      market_vendor.destroy
     else
       market_vendor_invalid
     end
