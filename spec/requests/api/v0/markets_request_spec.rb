@@ -126,4 +126,30 @@ describe "Markets Api" do
     expect(attributes).to have_key(:vendor_count)
     expect(attributes[:vendor_count]).to be_an(Integer)
   end
+
+  it "has a 422 error when invalid set of parameters are sent in" do 
+    create_list(:market, 4)
+    market = Market.create!(
+      {
+      "name": "Nob Hill Growers' Market",
+      "street": "Lead & Morningside SE",
+      "city": "Albuquerque",
+      "county": "Bernalillo",
+      "state": "New Mexico",
+      "zip": "",
+      "lat": "35.077529",
+      "lon": "-106.600449",
+      "vendor_count": 5
+      }
+    )
+
+    get "/api/v0/markets/search?city=albuquerque"
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(422)
+    data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(data[:errors]).to be_an(Array)
+    expect(data[:errors].first[:detail]).to eq("Invalid set of parameters. Please provide a valid set of parameters to perform a search with this endpoint.")
+  end
 end
